@@ -67,14 +67,13 @@ public class FirstJUnitTest extends ConfigJUnit {
         List<String> list2a = Arrays.asList("Ewa", "Adam", "Iwona");
 
         List<String> list3 = new ArrayList<String>();
-
         assertArrayEquals(list1.toArray(), list1a.toArray());
         assertThat(list2, hasSize(5));
         assertThat(list1, not(containsInAnyOrder(1, 2, 3)));
         assertThat(list2, not(IsEmptyCollection.empty()));
         assertThat(list3, IsEmptyCollection.empty());
         assertTrue(list2.containsAll(list2a));
-
+        assertTrue(true == true);
     }
 
 
