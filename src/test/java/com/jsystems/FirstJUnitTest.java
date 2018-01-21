@@ -74,7 +74,6 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(list3, IsEmptyCollection.empty());
         assertTrue(list2.containsAll(list2a));
         assertTrue(true == true);
-
     }
 
 
