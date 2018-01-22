@@ -51,5 +51,4 @@ public class ExpectedExceptionTest {
             assertThat(e.getMessage(), containsString("Invalid age"));
         }
     }
-
 }

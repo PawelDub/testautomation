@@ -77,6 +77,4 @@ public class FirstJUnitTest extends ConfigJUnit {
 
 
     }
-
-
 }
