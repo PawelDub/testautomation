@@ -32,8 +32,9 @@ public class FromIDETest extends FrontendConfigFactory {
         driver.findElement(By.id("usernameOrEmail")).clear();
         driver.findElement(By.id("usernameOrEmail")).sendKeys("automation012018@wp.pl");
         driver.findElement(By.cssSelector("button.button.form-button.is-primary")).click();
-//            driver.findElement(By.id("passwordInput")).clear();
-        driver.findElement(By.id("passwordInput")).sendKeys("Bimbajlo1@");
+//            driver.findElement(By.id("password")).clear();
+//            driver.findElement(By.id("password")).click();
+        driver.findElement(By.id("password")).sendKeys("Bimbajlo1@");
         driver.findElement(By.cssSelector("button.button.form-button.is-primary")).click();
         driver.findElement(By.cssSelector("img.gravatar")).click();
         driver.findElement(By.xpath("//div[@id='secondary']/ul/li/ul/li[5]/a/span")).click();
