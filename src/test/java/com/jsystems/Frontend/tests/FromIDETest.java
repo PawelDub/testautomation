@@ -25,7 +25,7 @@ public class FromIDETest extends FrontendConfigFactory {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testUntitledTestCase() throws Exception {
         driver.get(baseUrl);
         driver.findElement(By.id("navbar-login-link")).click();

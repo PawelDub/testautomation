@@ -15,7 +15,7 @@ public class LoginTest extends FrontendConfigFactory {
     MainLoginPage mainLoginPage;
 
     @Test
-    @Ignore
+//    @Ignore
     public void testContentMain(){
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
@@ -23,7 +23,7 @@ public class LoginTest extends FrontendConfigFactory {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testContentLogin(){
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
@@ -33,7 +33,7 @@ public class LoginTest extends FrontendConfigFactory {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testContentPassword() throws InterruptedException {
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
@@ -47,7 +47,7 @@ public class LoginTest extends FrontendConfigFactory {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testLogin(){
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
