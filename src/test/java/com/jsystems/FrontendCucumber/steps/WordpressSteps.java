@@ -103,6 +103,7 @@ PersonalPage personalPage;
     @When("^Checkbox is unselected$")
     public void checkboxIsUnselected() throws Throwable {
         assertFalse(notificationPage.checkbox.isSelected());
+        notificationPage.checkbox.click();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.jsystems.junitTests;
+package com.jsystems.JunitTests;
 
 import com.jsystems.validator.PhoneValidator;
 import junitparams.JUnitParamsRunner;

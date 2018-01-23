@@ -1,4 +1,4 @@
-package com.jsystems.junitTests;
+package com.jsystems.JunitTests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

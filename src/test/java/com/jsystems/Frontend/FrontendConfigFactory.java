@@ -48,13 +48,13 @@ public class FrontendConfigFactory {
     @After
     public void tearDown() throws Exception {
         System.out.println("================== @After Frontend =====================");
-        driver.close();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         driver.quit();
         driver = null;
         }
+        driver.close();
     }
 
 }

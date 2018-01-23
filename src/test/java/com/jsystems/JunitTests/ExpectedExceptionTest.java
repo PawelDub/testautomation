@@ -1,4 +1,4 @@
-package com.jsystems.junitTests;
+package com.jsystems.JunitTests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class ExpectedExceptionTest {
 
     @Test(expected = ArithmeticException.class)
+
     public void testDivisionWithException() {
         int i = 1 / 0;
     }

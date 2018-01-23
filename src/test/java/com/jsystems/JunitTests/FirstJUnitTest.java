@@ -1,4 +1,4 @@
-package com.jsystems.junitTests;
+package com.jsystems.JunitTests;
 
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.Test;
@@ -65,8 +65,8 @@ public class FirstJUnitTest extends ConfigJUnit {
         List<Integer> list1a = Arrays.asList(1,2,3,4,5);
         List<String> list2 = Arrays.asList("Ewa", "Adam", "Iwona", "Robert", "Tomek");
         List<String> list2a = Arrays.asList("Ewa", "Adam", "Iwona");
-
         List<String> list3 = new ArrayList<String>();
+
         assertArrayEquals(list1.toArray(), list1a.toArray());
         assertThat(list2, hasSize(5));
         assertThat(list1, not(containsInAnyOrder(1, 2, 3)));
@@ -74,7 +74,5 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(list3, IsEmptyCollection.empty());
         assertTrue(list2.containsAll(list2a));
         assertTrue(true == true);
-
-
     }
 }
