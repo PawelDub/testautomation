@@ -1,4 +1,4 @@
-package com.jsystems;
+package com.jsystems.junitTests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

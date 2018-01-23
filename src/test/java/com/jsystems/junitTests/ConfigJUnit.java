@@ -1,4 +1,4 @@
-package com.jsystems;
+package com.jsystems.junitTests;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -26,43 +26,43 @@ public class ConfigJUnit{
 
     @BeforeAll
     public static void beforeAll() {  //muszą być statyczne
-        System.out.println("@BeforeAll");
+        System.out.println("@BeforeAll Backend");
     }
 
     @Before
     public void setUp() {
-        System.out.println("@Before");
+        System.out.println("@Before Backend");
     }
 
     @BeforeClass
     public static void init() {
-        System.out.println("@BeforeClass");
+        System.out.println("@BeforeClass Backend");
     }
 
     @BeforeEach
     public void beforeTest() {  //nie mogą być statyczne
-        System.out.println("@BeforeEach");
+        System.out.println("@BeforeEach Backend");
     }
 
 
     @After
     public void tearDown(){
-        System.out.println("@After");
+        System.out.println("@After Backend");
     }
 
     @AfterClass
     public static void afterClass() {
-        System.out.println("@AfterClass");
+        System.out.println("@AfterClass Backend");
     }
 
     @AfterEach
     public void afterEach() {
-        System.out.println("@AfterEach");
+        System.out.println("@AfterEach Backend");
     }
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("@AfterAll");
+        System.out.println("@AfterAll Backend");
     }
 
 

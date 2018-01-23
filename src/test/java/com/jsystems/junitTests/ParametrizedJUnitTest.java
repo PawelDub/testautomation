@@ -1,16 +1,11 @@
-package com.jsystems;
+package com.jsystems.junitTests;
 
 import com.jsystems.validator.PhoneValidator;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import junitparams.custom.CustomParameters;
 import junitparams.custom.combined.CombinedParameters;
 import org.junit.*;
 import org.junit.runner.RunWith;
-
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

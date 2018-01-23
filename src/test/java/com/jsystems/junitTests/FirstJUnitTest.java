@@ -1,4 +1,4 @@
-package com.jsystems;
+package com.jsystems.junitTests;
 
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.Test;
