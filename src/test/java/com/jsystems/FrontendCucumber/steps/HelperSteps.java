@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class HelperSteps {
     WebDriver driver;
-//    Actions actions;
 
     public HelperSteps(FrontendCucumberFactory config) {
         try {

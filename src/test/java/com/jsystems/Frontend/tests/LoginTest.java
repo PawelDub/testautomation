@@ -6,7 +6,6 @@ import com.jsystems.Frontend.page.LoginPage;
 import com.jsystems.Frontend.page.MainLoginPage;
 import com.jsystems.Frontend.page.MainPage;
 import com.jsystems.Frontend.page.PasswordPage;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class LoginTest extends FrontendConfigFactory {
