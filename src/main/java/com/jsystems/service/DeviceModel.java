@@ -1,8 +1,8 @@
 package com.jsystems.service;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.NotNull;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
 
 public class DeviceModel implements Serializable{
@@ -11,6 +11,7 @@ public class DeviceModel implements Serializable{
     public String produce;
 
     @JsonProperty(value = "screen.size", required = true)
+    @Nonnull
     public String screen_size;
 
     @Override

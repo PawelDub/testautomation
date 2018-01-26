@@ -14,11 +14,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -28,7 +31,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Testy z wykorzystaniem biblioteki Rest Assured")
-    public void firstTest(){
+    public void firstTest() {
         given()
 //                .contentType(ContentType.JSON)
                 .spec(requestSpecBuilder)
@@ -44,7 +47,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Drugi test który się wysypie")
-    public void secondTest(){
+    public void secondTest() {
         given()
                 .contentType("application/json")
                 .when()
@@ -62,7 +65,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Trzeci test, użycie JsonPath")
-    public void SimpleTest(){
+    public void SimpleTest() {
         JsonPath jsonPath = RestAssured.given()
                 .when()
 //                .get("http://www.mocky.io/v2/5a6b69ec3100009d211b8aeb")
@@ -84,7 +87,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Test z użyciem JsonPath")
-    public void restTest(){
+    public void restTest() {
         JsonPath jsonPath = RestAssured.given()
                 .when()
 //                .get("http://www.mocky.io/v2/5a6a58222e0000d0377a7789")
@@ -102,7 +105,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Testy z wykorzystaniem biblioteki Rest Assured")
-    public void nextTest(){
+    public void nextTest() {
         Response response = given()
                 .contentType("application/json")
                 .when()
@@ -149,7 +152,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Error test")
-    public void errorTest(){
+    public void errorTest() {
         Response response = given()
                 .contentType("application/json")
                 .when()
@@ -173,7 +176,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Testy z użyciem  RequestSpecBuilder")
-    public void specBuiilderTest(){
+    public void specBuiilderTest() {
 
         //przenosimy do Configa
 //        RequestSpecification requestSpecBuilder = new RequestSpecBuilder()
@@ -201,15 +204,15 @@ public class RestAssuredTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Test na posta")
-    public void postTest(){
+    public void postTest() {
 
         Response response =
-        given()
-                .spec(requestSpecBuilder)
-                .when()
-                .body(new MyObj("Rafal", "Wrobel"))
-                .post("/5a690a1b2e000051007a73cb")
-                .andReturn();
+                given()
+                        .spec(requestSpecBuilder)
+                        .when()
+                        .body(new MyObj("Rafal", "Wrobel"))
+                        .post("/5a690a1b2e000051007a73cb")
+                        .andReturn();
 
         String responsePost = Arrays.asList(response
                 .then()
@@ -222,5 +225,38 @@ public class RestAssuredTest extends ConfigRestAssured {
 
         assertThat(responsePost).isEqualTo("[]");
     }
+
+    @Test
+    @DisplayName("Test na JsonSchema")
+    public void jsonSchemaTest() {
+        Response response = given()
+                .spec(requestSpecBuilder)
+                .when()
+//                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
+                .get("/5a690b452e000054007a73cd")
+                .andReturn();
+
+        response
+                .then()
+                .assertThat()
+                .body(matchesJsonSchema(new File("src/test/java/resources/schema/validation.json")));
+    }
+
+    @Test
+    @DisplayName("Test na JsonSchema")
+    public void jsonSchemaArrayTest() throws IOException {
+        Response response = given()
+                .spec(requestSpecBuilder)
+                .when()
+//                .get("http://www.mocky.io/v2/5a6a58222e0000d0377a7789")
+                .get("/5a6a58222e0000d0377a7789")
+                .andReturn();
+
+        response
+                .then()
+                .assertThat()
+                .body(matchesJsonSchemaInClasspath("schemaUser.json"));
+    }
+
 
 }

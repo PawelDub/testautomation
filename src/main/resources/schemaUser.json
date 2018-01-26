@@ -1,0 +1,58 @@
+{
+  "title": "User",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "User Schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "imie": {
+        "type": "string"
+      },
+      "nazwisko": {
+        "type": "string"
+      },
+      "device": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "device.model": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "produce": {
+                    "type": "string"
+                  },
+                  "screen.size": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "produce",
+                  "screen.size"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "type",
+            "device.model"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "imie",
+      "nazwisko",
+      "device"
+    ],
+    "additionalProperties": false
+  }
+}

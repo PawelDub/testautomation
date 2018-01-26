@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Error": {
+      "type": "object",
+      "properties": {
+        "error.code": {
+          "type": "integer"
+        },
+        "validation_erro": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "error.code",
+        "validation_erro",
+        "message"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "Error"
+  ],
+  "additionalProperties": false
+}
