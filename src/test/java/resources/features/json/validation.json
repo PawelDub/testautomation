@@ -1,0 +1,7 @@
+{
+  "Error": {
+    "error.code": 400,
+    "validation_erro": "invalid_email",
+    "message": "your email is invalid"
+  }
+}

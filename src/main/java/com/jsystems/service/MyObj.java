@@ -1,13 +1,21 @@
 package com.jsystems.service;
 
 public class MyObj {
-    private String name;
+    public String name;
+    public String surname;
 
-    public String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "MyObj{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 
-    public void setName(String name) {
+
+    public MyObj(String name, String surname) {
         this.name = name;
+        this.surname = surname;
     }
 }
+
