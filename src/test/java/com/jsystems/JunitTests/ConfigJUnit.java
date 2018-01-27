@@ -23,22 +23,22 @@ public class ConfigJUnit{
 
     @BeforeAll
     public static void beforeAll() {  //muszą być statyczne
-        System.out.println("@BeforeAll Backend");
+        System.out.println("====================== @BeforeAll Backend JUpiter");
     }
 
     @Before
     public void setUp() {
-        System.out.println("@Before Backend");
+        System.out.println("@Before Backend JUnit");
     }
 
     @BeforeClass
     public static void init() {
-        System.out.println("@BeforeClass Backend");
+        System.out.println("@BeforeClass Backend  JUnit");
     }
 
     @BeforeEach
     public void beforeTest() {  //nie mogą być statyczne
-        System.out.println("@BeforeEach Backend");
+        System.out.println("@BeforeEach Backend JUpiter");
     }
 
 

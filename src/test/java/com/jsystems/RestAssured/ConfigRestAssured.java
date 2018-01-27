@@ -19,12 +19,12 @@ public class ConfigRestAssured {
 
 @BeforeEach
 public void before(){
-    System.out.println("================== @BeforeClass RestTest =====================");
+    System.out.println("================== @BeforeClass RestTest JUpiter =====================");
 
 }
     @BeforeAll
     public static void setUp(){
-        System.out.println("================== @BeforeClass RestTest =====================");
+        System.out.println("================== @BeforeAll RestTest JUpiter =====================");
 
         RestAssured.baseURI = TestData.baseUri;
         RestAssured.basePath = "/v2";

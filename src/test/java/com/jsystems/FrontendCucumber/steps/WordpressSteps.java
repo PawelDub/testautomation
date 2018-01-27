@@ -25,10 +25,10 @@ public class WordpressSteps extends HelperSteps {
     }
 
     MainPage mainPage;
-        LoginPage loginPage;
-        PasswordPage passwordPage;
-        MainLoginPage mainLoginPage;
-PersonalPage personalPage;
+    LoginPage loginPage;
+    PasswordPage passwordPage;
+    MainLoginPage mainLoginPage;
+    PersonalPage personalPage;
     NotificationPage notificationPage;
 
     @Given("^User is on wordpress website: \"(.*)\"$")

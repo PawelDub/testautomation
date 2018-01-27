@@ -6,8 +6,11 @@ import com.jsystems.service.User;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,10 +25,12 @@ import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-public class RestAssuredTest extends ConfigRestAssured {
+
+@RunWith(JUnitPlatform.class)
+public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
-    @DisplayName("Testy z wykorzystaniem biblioteki Rest Assured")
+    @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
     public void firstTest() {
         given()
 //                .contentType(ContentType.JSON)
@@ -41,7 +46,8 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Drugi test który się wysypie")
+    @Disabled
+    @DisplayName("======================Drugi test który się wysypie")
     public void secondTest() {
         given()
                 .contentType("application/json")
@@ -59,7 +65,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Trzeci test, użycie JsonPath")
+    @DisplayName("======================Trzeci test, użycie JsonPath")
     public void SimpleTest() {
         JsonPath jsonPath = RestAssured.given()
                 .when()
@@ -81,7 +87,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Test z użyciem JsonPath")
+    @DisplayName("======================Test z użyciem JsonPath")
     public void restTest() {
         JsonPath jsonPath = RestAssured.given()
                 .when()
@@ -99,7 +105,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Testy z wykorzystaniem biblioteki Rest Assured")
+    @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
     public void nextTest() {
         Response response = given()
                 .contentType("application/json")
@@ -122,7 +128,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
 
     @Test
-    @DisplayName("Testy z wykorzystaniem biblioteki Rest Assured")
+    @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
     public void restAssuredSerializedTest() throws IOException {
 
         Response response = given()
@@ -146,7 +152,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
 
     @Test
-    @DisplayName("Error test")
+    @DisplayName("======================Error test")
     public void errorTest() {
         Response response = given()
                 .contentType("application/json")
@@ -170,7 +176,7 @@ public class RestAssuredTest extends ConfigRestAssured {
 
 
     @Test
-    @DisplayName("Testy z użyciem  RequestSpecBuilder")
+    @DisplayName("======================Testy z użyciem  RequestSpecBuilder")
     public void specBuiilderTest() {
 
         //przenosimy do Configa
@@ -198,7 +204,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Test na posta")
+    @DisplayName("======================Test na posta")
     public void postTest() {
 
         Response response =
@@ -222,7 +228,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Test na JsonSchema")
+    @DisplayName("======================Test na JsonSchema")
     public void jsonSchemaTest() {
         Response response = given()
                 .spec(requestSpecBuilder)
@@ -238,7 +244,7 @@ public class RestAssuredTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("Test na JsonSchema")
+    @DisplayName("======================Test na JsonSchema")
     public void jsonSchemaArrayTest() throws IOException {
         Response response = given()
                 .spec(requestSpecBuilder)

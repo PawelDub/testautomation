@@ -28,7 +28,7 @@ public class FrontendConfigFactory {
 
     @Before
     public void setUp() throws Exception {
-        System.out.println("================== @Before Frontend =====================");
+        System.out.println("================== @Before Frontend JUnit =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
         baseUrl = "https://wordpress.com/";

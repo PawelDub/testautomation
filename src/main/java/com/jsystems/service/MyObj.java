@@ -1,6 +1,9 @@
 package com.jsystems.service;
 
-public class MyObj {
+import java.io.Serializable;
+
+public class MyObj implements Serializable {
+
     public String name;
     public String surname;
 
@@ -12,6 +15,8 @@ public class MyObj {
                 '}';
     }
 
+    public MyObj() {
+    }
 
     public MyObj(String name, String surname) {
         this.name = name;

@@ -3,6 +3,8 @@ package com.jsystems.JunitTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-
+@RunWith(JUnitPlatform.class)
 public class ParametrizedJupiterTest extends ConfigJUnit {
 
         @DisplayName("====== first parametrized test ======")

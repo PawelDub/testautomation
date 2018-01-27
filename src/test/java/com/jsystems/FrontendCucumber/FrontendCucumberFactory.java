@@ -25,13 +25,13 @@ public class FrontendCucumberFactory {
 
     @BeforeClass
     public static void setupClass() {
-        System.out.println("================== @BeforeClass Frontend =====================");
+        System.out.println("================== @BeforeClass Frontend Cucumber =====================");
     }
 
     @Before
     public WebDriver setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
-        System.out.println("================== @Before Frontend =====================");
+        System.out.println("================== @Before Frontend Cucumber =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
         baseUrl = "https://wordpress.com/";

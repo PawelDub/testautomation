@@ -4,7 +4,7 @@ import com.jsystems.validator.PhoneValidator;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.custom.combined.CombinedParameters;
-import org.junit.*;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertFalse;
