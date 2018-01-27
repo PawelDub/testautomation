@@ -257,6 +257,4 @@ public class RestAssuredTest extends ConfigRestAssured {
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("schemaUser.json"));
     }
-
-
 }

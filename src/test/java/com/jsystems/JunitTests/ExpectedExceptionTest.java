@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class ExpectedExceptionTest {
 
     @Test(expected = ArithmeticException.class)
-
     public void testDivisionWithException() {
         int i = 1 / 0;
     }
