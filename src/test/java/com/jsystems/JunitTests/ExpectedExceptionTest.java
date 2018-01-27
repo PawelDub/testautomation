@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
-public class ExpectedExceptionTest {
+public class ExpectedExceptionTest extends ConfigJUnit {
 
     @Test(expected = ArithmeticException.class)
     public void testDivisionWithException() {
