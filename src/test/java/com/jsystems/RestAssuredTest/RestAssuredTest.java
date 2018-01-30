@@ -1,16 +1,11 @@
 package com.jsystems.RestAssuredTest;
 
-import com.jsystems.service.ErrorResponse;
-import com.jsystems.service.MyObj;
-import com.jsystems.service.User;
+import com.jsystems.models.ErrorResponse;
+import com.jsystems.models.MyObj;
+import com.jsystems.models.User;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
