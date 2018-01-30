@@ -14,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.*;
 
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 
 public class MockitoConfig {
@@ -54,7 +55,7 @@ public class MockitoConfig {
     @Before
     public void setUp() {
         System.out.println("========================= @Before Mockito ==================");
-        MockitoAnnotations.initMocks(this);
+//        MockitoAnnotations.initMocks(this);
         setMocks();
 //        mock(UserImplement.class);
 
@@ -79,9 +80,9 @@ public class MockitoConfig {
 
     public void setMocks() {
         userService = new UserService();
-        Mockito.when(userService.getOne(1).getId()).thenReturn(15);
-        Mockito.when(userService.getOne(1)).thenReturn(userMockFranek);
-        Mockito.when(userService.getOne(1).getName()).thenReturn("Iwona");
+//        Mockito.when(userService.getOne(1).getId()).thenReturn(15);
+//        Mockito.when(userService.getOne(1)).thenReturn(userMockFranek);
+//        Mockito.when(userService.getOne(1).getName()).thenReturn("Iwona");
         Mockito.when(userService.getAll().size()).thenReturn(10);
         Mockito.when(userService.getAll()).thenReturn(userMocks);
         Mockito.when(mockedList.size()).thenReturn(100);
@@ -89,13 +90,15 @@ public class MockitoConfig {
         Mockito.when(userImplement.getName()).thenReturn("Jolka");
         Mockito.when(userImplement.getSurname()).thenReturn("Witowski");
         Mockito.when(userImplement.isValid(anyString())).thenReturn(true);
-
+//
         Mockito.verify(userService,Mockito.times(1));
         Mockito.verify(userService.getAll(), Mockito.atLeast(1));
         Mockito.verify(mockedList.size());
-
+//
         Mockito.when(userMocksSpy.size()).thenReturn(1665);
         Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
+
+        Mockito.when(userService.getOneAdamNumber(anyInt())).thenReturn("Numer Adama wynosi 1" + anyInt());
     }
 
 }

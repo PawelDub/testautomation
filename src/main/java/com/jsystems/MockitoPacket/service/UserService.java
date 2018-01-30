@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public List<UserMock> getAll() {
-        List<UserMock> mockUsers = new ArrayList<>();
+        List<UserMock> mockUsers = new ArrayList<UserMock>();
         try {
             Statement statement = DatabaseConnector.getConnection().createStatement();
             String pytanie = "select id, name, surname from mockusers";
@@ -52,5 +52,9 @@ public class UserService {
             ex.printStackTrace();
         }
         return userMocks;
+    }
+
+    public String getOneAdamNumber(int number){
+        return "Adam ma numer " + number;
     }
 }

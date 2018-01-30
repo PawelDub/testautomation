@@ -9,8 +9,9 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+////import org.junit.platform.runner.JUnitPlatform;
+//import org.junit.platform.runner.JUnitPlatform;
+//import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
 
-@RunWith(JUnitPlatform.class)
+//@RunWith(JUnitPlatform.class)
 public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
