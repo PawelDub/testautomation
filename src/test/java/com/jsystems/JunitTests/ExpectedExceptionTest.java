@@ -2,6 +2,7 @@ package com.jsystems.JunitTests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+
 import com.jsystems.models.Person;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,12 +17,15 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class ExpectedExceptionTest extends ConfigJUnit {
 
+
+
     @Test(expected = ArithmeticException.class)
     public void testDivisionWithException() {
-        int i = 1 / 0;
+        int i = 1 / 1;
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
+//    @Ignore
     public void testEmptyList() {
         List<String> listaStringow = new ArrayList<String>();
         assertTrue(listaStringow.get(0).equals("aasdasdsd"));
@@ -29,8 +33,9 @@ public class ExpectedExceptionTest extends ConfigJUnit {
 
     @Test(expected = IllegalArgumentException.class)
     public void testExpectedException1() {
-        new Person("Joe", -1);
+        new com.jsystems.models.Person("Joe", -1);
     }
+
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -39,7 +44,7 @@ public class ExpectedExceptionTest extends ConfigJUnit {
     public void testExpectedException() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(containsString("Invalid age"));
-        new Person("Joe", -1);
+        new com.jsystems.models.Person("Joe", -1);
     }
 
     @Test

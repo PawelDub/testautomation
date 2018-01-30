@@ -31,11 +31,13 @@ public class ParametrizedJUnitTest extends ConfigJUnit {
         assertFalse(phoneValidator.validatePhoneNumber(phone));
     }
 
+
     @Test
     @CombinedParameters({"1,3", "1,3"})
     public void combinedParameters(String first, String second) {
         System.out.println("=== test na true dla combined parameters");
         String result = first +second;
+        System.out.println(result);
         assertTrue(result.contains("1") || result.contains("3"));
 
         Integer c = Integer.valueOf(first);
