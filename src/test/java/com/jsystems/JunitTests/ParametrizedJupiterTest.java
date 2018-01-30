@@ -36,6 +36,7 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
 
             assertTrue(listaStringow.contains(tekst));
             assertTrue(listaIntegerow.contains(liczba));
+            assertTrue(listaIntegerow.contains(liczba));
         }
 
         @DisplayName("====== Second parametrized test ======")
