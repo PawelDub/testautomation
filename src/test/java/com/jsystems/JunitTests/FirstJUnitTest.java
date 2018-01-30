@@ -56,6 +56,8 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(testowy, containsString("Test"));
         assertThat(testowy, equalTo("firstTest"));
         assertThat(integery, hasItem(5));
+        assertThat(integery, hasItem(5));
+        assertThat(integery, hasItem(5));
     }
 
     @Test
