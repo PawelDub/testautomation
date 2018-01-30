@@ -55,7 +55,7 @@ public class MockitoConfig {
     @Before
     public void setUp() {
         System.out.println("========================= @Before Mockito ==================");
-//        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
         setMocks();
 //        mock(UserImplement.class);
 

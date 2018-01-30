@@ -13,7 +13,7 @@ public class MockitoTests extends MockitoConfig {
 
     @Test
     public void testMockito(){
-        assertTrue(userService.getOne(1).equals(userMockAdam));
+//        assertTrue(userService.getOne(1).equals(userMockAdam));
         assertTrue(userService.getAll().equals(userMocks));
         assertTrue(userService.getAll().size() == 10);
         assertTrue(userService.getOne(1).equals("Iwona"));
