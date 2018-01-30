@@ -2,7 +2,7 @@ package com.jsystems.JunitTests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import com.jsystems.service.Person;
+import com.jsystems.models.Person;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

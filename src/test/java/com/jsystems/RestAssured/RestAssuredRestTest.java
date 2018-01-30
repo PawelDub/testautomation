@@ -1,4 +1,4 @@
-package com.jsystems.RestAssured;
+package com.jsystems.RestAssuredTest;
 
 import com.jsystems.service.ErrorResponse;
 import com.jsystems.service.MyObj;
@@ -258,4 +258,6 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("schemaUser.json"));
     }
+
+
 }
