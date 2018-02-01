@@ -10,8 +10,6 @@ import static junit.framework.TestCase.assertTrue;
 
 public class MainPage extends HelperPage {
 
-
-
     public MainPage(WebDriver driver) {
         super(driver);
     }

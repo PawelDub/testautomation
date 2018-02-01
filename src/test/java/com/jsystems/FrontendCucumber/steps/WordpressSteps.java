@@ -31,9 +31,9 @@ public class WordpressSteps extends HelperSteps {
     PersonalPage personalPage;
     NotificationPage notificationPage;
 
-    @Given("^User is on wordpress website: \"(.*)\"$")
-    public void userIsOnWordpressWebsite(String website) throws Throwable {
-        driver.get(website);
+    @Given("^User is on wordpress website$")
+    public void userIsOnWordpressWebsite() throws Throwable {
+        driver.get("https://wordpress.com/");
         mainPage = new MainPage(driver);
         assertTrue(mainPage.title.equals(TestDataStatic.wordpressTitle));
     }

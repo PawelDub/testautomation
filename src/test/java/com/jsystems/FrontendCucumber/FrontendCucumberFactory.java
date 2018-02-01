@@ -34,7 +34,7 @@ public class FrontendCucumberFactory {
         System.out.println("================== @Before Frontend Cucumber =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
-        baseUrl = "https://wordpress.com/";
+//        baseUrl = "https://wordpress.com/";
         if (driver == null) {
             driver = new ChromeDriver(chromeOptions);
         }

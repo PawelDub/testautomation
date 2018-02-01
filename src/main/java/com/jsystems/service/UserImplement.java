@@ -1,4 +1,4 @@
-package com.jsystems.MockitoPacket.service;
+package com.jsystems.service;
 
 public interface UserImplement {
 

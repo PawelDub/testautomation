@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = "classpath:com.jsystems",
         plugin = {"html:target/cucumber-html-report", "rerun:target/rerun.txt"},
         tags = {
-                "@wordpress",
+                "@wordpress"
 
         }
 )

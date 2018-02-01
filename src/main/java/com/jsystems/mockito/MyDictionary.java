@@ -1,4 +1,4 @@
-package com.jsystems.Mockito;
+package com.jsystems.mockito;
 
 import java.util.HashMap;
 import java.util.Map;

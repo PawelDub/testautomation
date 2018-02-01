@@ -1,4 +1,4 @@
-package com.jsystems.Mockito;
+package com.jsystems.mockito;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +8,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.anyInt;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MockitoTests extends MockitoConfig {
@@ -16,10 +15,10 @@ public class MockitoTests extends MockitoConfig {
 
     @Test
     public void testMockito(){
-        assertTrue(userService.getOne(1).getId() == 1);
+        assertTrue(userService.getOne(1l).getId() == 1);
         assertTrue(userService.getAll().equals(userMocks));
         assertTrue(userService.getAll().size() == 3);
-        assertTrue(userService.getOne(1).getName().equals("Franek"));
+        assertTrue(userService.getOne(1l).getName().equals("Franek"));
 
         Mockito.verify(userService,Mockito.atLeastOnce()).getAll();
         Mockito.verify(userService, Mockito.atLeast(2)).getAll();

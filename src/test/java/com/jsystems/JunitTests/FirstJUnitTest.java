@@ -1,10 +1,19 @@
 package com.jsystems.JunitTests;
 
+import com.jsystems.mockitoPacket.UserMock;
+import com.jsystems.mockitoPacket.UserMockReposytory;
+import com.jsystems.service.UserService;
+import com.jsystems.springbootTest.H2JpaConfig;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.ws.rs.core.Application;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +24,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
+
 
 public class FirstJUnitTest extends ConfigJUnit {
 
@@ -77,4 +87,27 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertTrue(list2.containsAll(list2a));
         assertTrue(true == true);
     }
+
+
+    @Autowired
+    UserMockReposytory userMockReposytory;
+
+        UserService userService = new UserService();
+    @Test
+    public void getUserMockTest(){
+//
+        UserMock userMock = userService.getOne(1l);
+        System.out.println(userMock.toString());
+
+        List<UserMock> userMocks = new ArrayList<UserMock>();
+
+        userMocks = userService.getAll();
+        System.out.println(userMocks.toString());
+
+//        userService.saveOne(new UserMock(4, "Roman", "Romanowski"));
+
+//        userService.delete(4);
+
+    }
+
 }

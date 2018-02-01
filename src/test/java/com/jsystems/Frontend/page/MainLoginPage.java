@@ -17,7 +17,7 @@ public class MainLoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "svg.gridicon.gridicons-user-circle")
+    @FindBy(css = "a[data-tip-target=\"me\"]")
     public WebElement avatar;
 
     @FindBy(css = "a[data-tip-target=\"my-sites\"] span")

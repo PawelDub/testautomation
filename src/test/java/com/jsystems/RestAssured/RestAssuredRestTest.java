@@ -3,6 +3,7 @@ package com.jsystems.RestAssured;
 import com.jsystems.models.ErrorResponse;
 import com.jsystems.models.MyObj;
 import com.jsystems.models.User;
+
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;

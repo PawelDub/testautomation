@@ -83,6 +83,15 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
             assertTrue(digit % 2 == 0);
         }
 
+
+
+    }
+
+    @Nested
+    @DisplayName("======== TO są kolejne scenariusze testów ===========")
+    public class JupiterNestedSecondTest {
+        String testowy = "testowyString";
+
         @ParameterizedTest
         @CsvFileSource(resources = "/plik.csv")
         public void withFile(String name, Integer age) {
@@ -92,14 +101,6 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
             assertTrue(name.contains(","));
             assertTrue(age instanceof Integer);
         }
-
-
-    }
-
-    @Nested
-    @DisplayName("======== TO są kolejne scenariusze testów ===========")
-    public class JupiterNestedSecondTest {
-        String testowy = "testowyString";
 
         @Test
         public void toJestTest() {

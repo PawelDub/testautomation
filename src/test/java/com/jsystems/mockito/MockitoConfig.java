@@ -1,8 +1,8 @@
-package com.jsystems.Mockito;
+package com.jsystems.mockito;
 
-import com.jsystems.MockitoPacket.UserMock;
-import com.jsystems.MockitoPacket.service.UserImplement;
-import com.jsystems.MockitoPacket.service.UserService;
+import com.jsystems.mockitoPacket.UserMock;
+import com.jsystems.service.UserImplement;
+import com.jsystems.service.UserService;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,7 +10,6 @@ import org.junit.BeforeClass;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.util.*;
 
@@ -23,7 +22,7 @@ public class MockitoConfig {
 
     @BeforeClass
     public static void beforeClass() {
-        System.out.println("========================= @BeforeClass Mockito ==================");
+        System.out.println("========================= @BeforeClass mockito ==================");
 
     }
 
@@ -44,9 +43,9 @@ public class MockitoConfig {
 
 
 
-    UserMock userMockFranek = new UserMock(1, "Franek", "Kimono");
-    UserMock userMockAdam = new UserMock(2, "Adam", "Kurka");
-    UserMock userMockJanina = new UserMock(3, "Janina", "Wiosna");
+    UserMock userMockFranek = new UserMock(1l, "Franek", "Kimono");
+    UserMock userMockAdam = new UserMock(2l, "Adam", "Kurka");
+    UserMock userMockJanina = new UserMock(3l, "Janina", "Wiosna");
     List<UserMock> userMocks = Arrays.asList(userMockAdam, userMockFranek, userMockJanina);
 
     @Mock
@@ -57,7 +56,7 @@ public class MockitoConfig {
 
     @Before
     public void setUp() {
-        System.out.println("========================= @Before Mockito ==================");
+        System.out.println("========================= @Before mockito ==================");
 //        MockitoAnnotations.initMocks(this);
 //        userService = mock(UserService.class);
 //        userImplement = mock(UserImplement.class);
@@ -72,20 +71,20 @@ public class MockitoConfig {
 
     @After
     public void tearDown(){
-        System.out.println("========================= @After Mockito ==================");
+        System.out.println("========================= @After mockito ==================");
 
     }
 
     @AfterClass
     public static void afterClass(){
-        System.out.println("========================= @AfterClass Mockito ==================");
+        System.out.println("========================= @AfterClass mockito ==================");
 
     }
 
     public void setMocks() {
 //        userService = new UserService();
 
-        Mockito.when(userService.getOne(1)).thenReturn(userMockFranek);
+        Mockito.when(userService.getOne(1l)).thenReturn(userMockFranek);
         Mockito.when(userService.getAll()).thenReturn(userMocks);
         Mockito.when(mockedList.size()).thenReturn(100);
         Mockito.when(userImplement.getId()).thenReturn(156);

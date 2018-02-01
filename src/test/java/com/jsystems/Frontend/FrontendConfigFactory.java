@@ -36,6 +36,7 @@ public class FrontendConfigFactory {
             driver = new ChromeDriver(chromeOptions);
         }
         pripareDriver();
+        driver.get(baseUrl);
     }
 
     void pripareDriver(){
