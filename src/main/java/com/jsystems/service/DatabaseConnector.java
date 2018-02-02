@@ -13,7 +13,7 @@ public class DatabaseConnector {
         return DatabaseConnector.connection;
     }
 
-    public static void initConnection() {
+    private static void initConnection() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             String url = "jdbc:oracle:thin:@localhost:1521:xe";

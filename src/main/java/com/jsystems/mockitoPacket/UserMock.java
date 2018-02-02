@@ -5,15 +5,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class UserMock {
 
-    @Id
+//    @Id
     private Long id;
 
-    @Column(name = "name")
+//    @Column(name = "name")
     private String name;
-    @Column(name = "surname")
+//    @Column(name = "surname")
     private String surname;
 
     public UserMock(Long id, String name, String surname) {
