@@ -68,8 +68,8 @@ public class FrontendCucumberFactory {
             fail(verificationErrorString);
             driver.quit();
             driver = null;
-        }
         driver.close();
+        }
     }
 
 }

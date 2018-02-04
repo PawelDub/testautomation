@@ -4,6 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,13 +23,20 @@ public class FrontendConfigFactory {
     private StringBuffer verificationErrors = new StringBuffer();
     public String id = "0";
 
-    @BeforeClass
+    // Jeżeli testy uruchamiane są przez JUnit to używamy metody @BeforeClass
+    // Jeżeli testy są uruchamiane przez JUpiter to używamy @BeForeAll
+//    @BeforeClass
+    @BeforeAll
     public static void setupClass() {
         System.out.println("================== @BeforeClass Frontend =====================");
         WebDriverManager.chromedriver().setup();
     }
 
-    @Before
+
+    // Jeżeli testy uruchamiane są przez JUnit to używamy metody @Before
+    // Jeżeli testy są uruchamiane przez JUpiter to używamy @BeForeEach
+//    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         System.out.println("================== @Before Frontend JUnit =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -45,8 +55,10 @@ public class FrontendConfigFactory {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-
-    @After
+    // Jeżeli testy uruchamiane są przez JUnit to używamy metody @After
+    // Jeżeli testy są uruchamiane przez JUpiter to używamy @AfterEach
+//    @After
+    @AfterEach
     public void tearDown() throws Exception {
         System.out.println("================== @After Frontend =====================");
         String verificationErrorString = verificationErrors.toString();

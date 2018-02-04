@@ -18,6 +18,8 @@
 
     <build>
         <plugins>
+
+            <!--Ten plugin odpowiada za prawidłowe uruchamianie testów z użyciem Java 8-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -27,17 +29,21 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-surefire-plugin</artifactId>-->
-                <!--<version>2.20</version>-->
-                <!--<configuration>-->
-                    <!--<includes>-->
-                        <!--<include>**/*RunTests.java</include>-->
-                        <!--<include>**/*Test.java</include>-->
-                    <!--</includes>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+
+            <!--Plugin do mavena aby w uruchamiał wszystkie testy które mają w nazwie klasy końcówkę Test oraz RunTests
+            dzięki czemu uruchamiane będą również testy zarządzane przez cucumbera-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <includes>
+                        <include>**/*RunTests.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -77,20 +83,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.junit.platform</groupId>-->
-            <!--<artifactId>junit-platform-runner</artifactId>-->
-            <!--<version>1.1.0-M1</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.1.0-M1</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -116,8 +108,6 @@
             <scope>test</scope>
         </dependency>
 
-
-
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
@@ -140,8 +130,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.3</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>javax.ws.rs</groupId>
@@ -197,14 +185,6 @@
             <version>1.5.2.RELEASE</version>
         </dependency>
 
-
-        <!--<dependency>-->
-            <!--<groupId>com.jayway.restassured</groupId>-->
-            <!--<artifactId>json-schema-validator</artifactId>-->
-            <!--<version>${rest-assured.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
         <dependency>
         <groupId>com.oracle</groupId>
         <artifactId>ojdbc6</artifactId>
@@ -216,18 +196,6 @@
             <artifactId>spring</artifactId>
             <version>2.5.6</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.4.0.Final</version>
-        </dependency>
-
 
     </dependencies>
 

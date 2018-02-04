@@ -3,7 +3,7 @@ package com.jsystems.Frontend.tests;
 import com.jsystems.Frontend.FrontendConfigFactory;
 import com.jsystems.Frontend.page.MainPage;
 import gherkin.lexer.Fr;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

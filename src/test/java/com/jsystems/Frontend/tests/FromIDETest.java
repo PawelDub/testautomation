@@ -2,7 +2,7 @@ package com.jsystems.Frontend.tests;
 
 
 import com.jsystems.Frontend.FrontendConfigFactory;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 
 public class FromIDETest extends FrontendConfigFactory {

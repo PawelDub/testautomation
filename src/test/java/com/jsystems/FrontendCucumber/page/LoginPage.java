@@ -15,13 +15,21 @@ public class LoginPage extends HelperPage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public WebElement loginHeader = driver.findElement(By.cssSelector("div#primary div.login__form-header")) ;
 
-    public WebElement usernameInput = driver.findElement(By.id("usernameOrEmail"));
+    @FindBy(css = "div#primary div.login__form-header")
+    public WebElement loginHeader;
+//    public WebElement loginHeader = driver.findElement(By.cssSelector("div#primary div.login__form-header")) ;
 
-    public WebElement buttonContinue = driver.findElement(By.cssSelector("div.login__form-action button[type=\"submit\"]"));
+    @FindBy(id = "usernameOrEmail")
+    public WebElement usernameInput;
+//    public WebElement usernameInput = driver.findElement(By.id("usernameOrEmail"));
+
+    @FindBy(css = "div.login__form-action button[type=\"submit\"]")
+    public WebElement buttonContinue;
+//    public WebElement buttonContinue = driver.findElement(By.cssSelector("div.login__form-action button[type=\"submit\"]"));
 
 
     public boolean isContentPresent(){

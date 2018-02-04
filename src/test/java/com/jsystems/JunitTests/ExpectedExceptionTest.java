@@ -21,7 +21,7 @@ public class ExpectedExceptionTest extends ConfigJUnit {
 
     @Test(expected = ArithmeticException.class)
     public void testDivisionWithException() {
-        int i = 1 / 1;
+        int i = 1 / 0;
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
