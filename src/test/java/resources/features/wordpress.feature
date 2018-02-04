@@ -1,8 +1,8 @@
 Feature: Test of content AddToYourOrder page
 
-  @wordpress
+  @wordpress @Login
   Scenario: Checking of CartSubtotal content
-    Given User is on wordpress website
+    Given User is on wordpress website "https://wordpress.com/"
     When User clicks to <login>
     Then User is on first login page
     When User enter email and press Continue

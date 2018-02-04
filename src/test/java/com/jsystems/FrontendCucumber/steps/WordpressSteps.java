@@ -7,14 +7,22 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class WordpressSteps extends HelperSteps {
-    WebDriver driver;
+
+    //Jeżeli nie robilibysmy dziedziczenia po klasie HelperSteps to musielibysmy wówczas mieć tutaj pole
+    // WebDriver driver;
+    // oraz w konstruktorze nie możemy wówczas mieć linii
+    // super(config) wymuszone to jest ze względu na dziedziczenie
 
     public WordpressSteps(FrontendCucumberFactory config) {
+
         super(config);
         try {
             driver = config.setUp();
@@ -31,10 +39,13 @@ public class WordpressSteps extends HelperSteps {
     PersonalPage personalPage;
     NotificationPage notificationPage;
 
-    @Given("^User is on wordpress website$")
-    public void userIsOnWordpressWebsite() throws Throwable {
-        driver.get("https://wordpress.com/");
+    @Given("^User is on wordpress website \"(.*)\"$")
+    public void userIsOnWordpressWebsite(String website) throws Throwable {
+        driver.get(website);
+
         mainPage = new MainPage(driver);
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(mainPage.logIn));
+
         assertTrue(mainPage.title.equals(TestDataStatic.wordpressTitle));
     }
 
