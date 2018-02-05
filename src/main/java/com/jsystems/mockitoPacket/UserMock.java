@@ -1,10 +1,6 @@
 package com.jsystems.mockitoPacket;
 
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+//Adnotacje używane przy użyciu ORM-a hibernate
 //@Entity
 public class UserMock {
 
