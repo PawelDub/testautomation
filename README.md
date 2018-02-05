@@ -5,6 +5,7 @@ Znajdują się tu przykłady z wykorzystaniem
 - JUnit, 
 - JUpiter, 
 - Selenium WebDriver z zastosowaniem Page Object Pattern oraz Page Factory
+- Cucumber BDD 
 - Rest Assured
 - Mockito
 - JDBC 
