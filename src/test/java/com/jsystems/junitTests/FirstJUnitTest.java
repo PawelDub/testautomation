@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
 
-public class FirstJUnitTest extends ConfigJUnit {
+public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
 
     @Test
     @DisplayName("======== To jest pierwszy test ===============")
@@ -88,14 +88,16 @@ public class FirstJUnitTest extends ConfigJUnit {
     @Test
     @DisplayName("JDBC")
     public void getUserMockTest(){
-//
         UserMock userMock = userService.getOne(1l);
         System.out.println(userMock.toString());
+        assertTrue(userMock.getId() == 1);
+
 
         List<UserMock> userMocks = new ArrayList<UserMock>();
 
         userMocks = userService.getAll();
         System.out.println(userMocks.toString());
+        assertTrue(userMocks.get(0).getId() == 1);
 
 //        userService.saveOne(new UserMock(4, "Roman", "Romanowski"));
 

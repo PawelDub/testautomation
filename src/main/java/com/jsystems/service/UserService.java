@@ -12,31 +12,37 @@ import java.util.List;
 public class UserService {
 
 
-    public List<UserMock> ladujDane(ResultSet wynik) {
-        List<UserMock> userMocks = new ArrayList<UserMock>();
-        try {
-            while (wynik.next()) {
-                UserMock userMock = new UserMock();
-                userMock.setId(wynik.getLong(1));
-                userMock.setName(wynik.getString(2));
-                userMock.setSurname(wynik.getString(3));
-
-                userMocks.add(userMock);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return userMocks;
-    }
+//    public List<UserMock> ladujDane(ResultSet wynik) {
+//        List<UserMock> userMocks = new ArrayList<UserMock>();
+//        try {
+//            while (wynik.next()) {
+//                UserMock userMock = new UserMock();
+//                userMock.setId(wynik.getLong(1));
+//                userMock.setName(wynik.getString(2));
+//                userMock.setSurname(wynik.getString(3));
+//
+//                userMocks.add(userMock);
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return userMocks;
+//    }
 
     public UserMock getOne(Long id) {
-        UserMock userMock = new UserMock();
         String sql = "select * from usermock where id = " + id;
+        UserMock userMock = new UserMock();
         try {
             Statement statement = DatabaseConnector.getConnection().createStatement();
             ResultSet wynik = statement.executeQuery(sql);
             System.out.println(wynik.toString());
-            userMock = ladujDane(wynik).get(0);
+
+            while (wynik.next()) {
+
+                userMock.setId(wynik.getLong(1));
+                userMock.setName(wynik.getString(2));
+                userMock.setSurname(wynik.getString(3));
+            }
             wynik.close();
             statement.close();
         } catch (Exception ex) {
@@ -51,7 +57,14 @@ public class UserService {
             Statement statement = DatabaseConnector.getConnection().createStatement();
             String sql = "select * from usermock";
             ResultSet wynik = statement.executeQuery(sql);
-            mockUsers = ladujDane(wynik);
+//            mockUsers = ladujDane(wynik);
+            while (wynik.next()) {
+                UserMock userMock = new UserMock();
+                userMock.setId(wynik.getLong(1));
+                userMock.setName(wynik.getString(2));
+                userMock.setSurname(wynik.getString(3));
+                mockUsers.add(userMock);
+            }
             wynik.close();
             statement.close();
         } catch (Exception ex) {
@@ -71,8 +84,8 @@ public class UserService {
 
 
     public void update(UserMock userMock, int id) {
-        String sql = "update usermock set id =" + userMock.getId()+ ", name ='"
-                + userMock.getName() + "', surname ='" + userMock.getSurname() + " where id =" + id;
+        String sql = "update usermock set id = " + userMock.getId() + ", name = "
+                + userMock.getName() + ", surname = " + userMock.getSurname() + " where id = " + id;
         try {
             DatabaseConnector.getConnection().createStatement().executeUpdate(sql);
         } catch (SQLException e) {
@@ -81,7 +94,7 @@ public class UserService {
     }
 
     public void delete(int id) {
-        String sql = "delete usermock where id =" + id;
+        String sql = "delete usermock where id = " + id;
         try {
             DatabaseConnector.getConnection().createStatement().executeUpdate(sql);
         } catch (SQLException e) {
@@ -90,19 +103,17 @@ public class UserService {
     }
 
 
-
-
-    public String getOneAdamNumber(int number){
+    public String getOneAdamNumber(int number) {
         return "Adam ma numer " + number;
     }
 
-    public List<UserMock> getAllMock(){
-        return Arrays.asList(new UserMock(1l,"Adam", "Kowalski"),
-                new UserMock(2l,"Iwona", "Jasielska"),
-                new UserMock(3l,"iron", "Pływak"));
+    public List<UserMock> getAllMock() {
+        return Arrays.asList(new UserMock(1l, "Adam", "Kowalski"),
+                new UserMock(2l, "Iwona", "Jasielska"),
+                new UserMock(3l, "iron", "Pływak"));
     }
 
-    public UserMock getOneMock(Long user){
-        return new UserMock(4l,"Irek", "Dran");
+    public UserMock getOneMock(Long user) {
+        return new UserMock(4l, "Irek", "Dran");
     }
 }

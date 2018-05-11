@@ -84,4 +84,60 @@ public class WindowsTest  extends FrontendConfigFactory {
     }
 
 
+    @Test
+    public void pageScroll() {
+        String contactUrl = "http://www.testdiary.com/training/selenium/selenium-test-page/";
+
+        driver.get(contactUrl);
+
+//wait until Selenium can find the link with locator Linktext "Open page in a new window" on the test page.
+
+        (new WebDriverWait(driver, 10))
+
+                .until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Open page in the same window")));
+
+
+//Point Selenium to the Element you want to scroll to and get it's Location
+
+//Store location with Y coordinates in the variable hyperlinkYCoordinate of type integer
+
+        int hyperlinkYCoordinate = driver.findElement(By.linkText("Open page in the same window")).getLocation().getY();
+
+
+//Store location with X coordinates in the variable hyperlinkYCoordinate of type integer
+
+        int hyperlinkXCoordinate = driver.findElement(By.linkText("Open page in the same window")).getLocation().getX();
+
+
+// Use Java Script Executor to scroll down the WebPage to the position where the element is
+
+        JavascriptExecutor jsexecutor = (JavascriptExecutor) driver;
+
+
+// parse the X and Y coordinates from the above into the execute Script method with the following String
+
+        jsexecutor.executeScript("window.scrollBy(" + hyperlinkXCoordinate + "," + hyperlinkYCoordinate + ")", "");
+
+// wait until element 'linkText("Open page in the same window")' is clickable
+        (new WebDriverWait(driver, 100)).until(ExpectedConditions.elementToBeClickable(By.linkText("Open page in the same window")));
+
+// click on the link
+
+        driver.findElement(By.linkText("Open page in the same window")).click();
+
+//        driver.close();
+
+
+    }
+
+    @Test
+    public void popupHandler(){
+        driver.switchTo().alert();
+//Selenium-WebDriver Java Code for entering Username & Password as below:
+        driver.findElement(By.id("userID")).sendKeys("userName");
+        driver.findElement(By.id("password")).sendKeys("myPassword");
+        driver.switchTo().alert().accept();
+        driver.switchTo().defaultContent();
+    }
+
 }

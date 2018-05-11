@@ -137,8 +137,11 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .get("/5a6a58222e0000d0377a7789")
                 .andReturn();
 
-        List<User> users = Arrays.asList(response.then().extract().body()
-                .as(User[].class));
+        User[] usersTab = response.then().extract().body()
+                .as(User[].class);
+
+
+        List<User> users = Arrays.asList(usersTab);
 
         System.out.println(users.get(0).toString());
         System.out.println(users.get(0).device.get(0).deviceModel.get(0).toString());
@@ -203,7 +206,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     }
 
     @Test
-    @DisplayName("======================Test na posta")
+    @DisplayName("====================== Test na posta")
     public void postTest() {
 
         Response response =

@@ -8,14 +8,20 @@ import java.util.List;
 public class Device implements Serializable {
     public String type;
 
-    @JsonProperty("device.model")
+    @JsonProperty(value = "device.model", required = true)
     public List<DeviceModel> deviceModel;
 
     @Override
     public String toString() {
-        return "Device{" +
-                "type='" + type + '\'' +
-                ", deviceModel=" + deviceModel +
-                '}';
+        return "\n\t{" +
+                "\n\ttype : '" + type + '\'' +
+                ", \n\tdeviceModel : " + deviceModel + "\n\t}";
     }
+
+//    public String toString() {
+//        return "\n\t{" +
+//                "\n\t\timie : '" + imie + '\'' +
+//                ", \n\t\tnazwisko : '" + nazwisko + '\'' +
+//                ", \n\t\tdevice :" + device + "\n\t}";
+//    }
 }

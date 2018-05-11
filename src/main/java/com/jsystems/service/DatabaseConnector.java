@@ -7,10 +7,10 @@ public class DatabaseConnector {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-        if (DatabaseConnector.connection == null) {
+        if (connection == null) {
             initConnection();
         }
-        return DatabaseConnector.connection;
+        return connection;
     }
 
     private static void initConnection() {
@@ -19,7 +19,7 @@ public class DatabaseConnector {
             String url = "jdbc:oracle:thin:@localhost:1521:xe";
             String user = "usermock";
             String pass = "usermock";
-            DatabaseConnector.connection = DriverManager.getConnection(url, user, pass);
+            connection = DriverManager.getConnection(url, user, pass);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

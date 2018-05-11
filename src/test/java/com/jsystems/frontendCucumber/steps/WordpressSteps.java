@@ -113,5 +113,4 @@ public class WordpressSteps extends HelperSteps {
         assertFalse(notificationPage.checkbox.isSelected());
         notificationPage.checkbox.click();
     }
-
 }

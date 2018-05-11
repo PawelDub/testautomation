@@ -11,10 +11,9 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return "User{" +
-                "imie='" + imie + '\'' +
-                ", nazwisko='" + nazwisko + '\'' +
-                ", device=" + device +
-                '}';
+        return "\n\t{" +
+                "\n\t\timie : '" + imie + '\'' +
+                ", \n\t\tnazwisko : '" + nazwisko + '\'' +
+                ", \n\t\tdevice :" + device + "\n\t}";
     }
 }
