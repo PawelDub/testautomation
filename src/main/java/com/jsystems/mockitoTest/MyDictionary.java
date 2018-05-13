@@ -10,10 +10,10 @@ public class MyDictionary {
         wordMap = new HashMap<String, String>();
     }
 
-    public void add(final String word, final String meaning) {
+    public void add(String word, String meaning) {
         wordMap.put(word, meaning);
     }
-    public String getMeaning(final String word) {
+    public String getMeaning(String word) {
         return wordMap.get(word);
     }
 }

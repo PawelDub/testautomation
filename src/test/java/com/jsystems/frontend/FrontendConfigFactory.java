@@ -16,7 +16,7 @@ public class FrontendConfigFactory {
 
     public WebDriver driver = null;
     public String baseUrl;
-    private boolean acceptNextAlert = true;
+//    private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     public String id = "0";
 

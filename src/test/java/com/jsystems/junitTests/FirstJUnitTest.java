@@ -103,12 +103,5 @@ public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
 
 //        userService.delete(4);
 
-
-
-
-
-
-
     }
-
 }
