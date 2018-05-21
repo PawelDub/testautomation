@@ -23,6 +23,7 @@ public class ActionTest extends FrontendConfigFactory {
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
         mainPage.logIn.click();
+
         Actions action = new Actions(driver);
         action.moveToElement(
                 mainPage.logIn,

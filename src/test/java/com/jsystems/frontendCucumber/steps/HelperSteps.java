@@ -1,6 +1,7 @@
 package com.jsystems.frontendCucumber.steps;
 
 import com.jsystems.frontendCucumber.FrontendCucumberFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,8 +19,9 @@ public class HelperSteps {
         }
     }
 
+    public void webWait(By element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
 
-//    public void waitVisibilityOf(WebElement webElement, int  time){
-//        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(webElement));
-//    }
 }

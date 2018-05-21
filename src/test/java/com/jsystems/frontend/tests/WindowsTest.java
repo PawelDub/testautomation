@@ -2,6 +2,7 @@ package com.jsystems.frontend.tests;
 
 import com.jsystems.frontend.FrontendConfigFactory;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -14,9 +15,10 @@ import java.util.Set;
 public class WindowsTest  extends FrontendConfigFactory {
 
     @Test
-    public void testWindows(){
+    public void testWindows() throws InterruptedException {
         String firstPageWindowHandle;
         String secondTestWindowHandle = null;
+
         String contactUrl = "http://www.testdiary.com/training/selenium/selenium-test-page/";
 
         driver.get(contactUrl);
@@ -32,22 +34,21 @@ public class WindowsTest  extends FrontendConfigFactory {
         JavascriptExecutor jsexecutor = (JavascriptExecutor) driver;
         jsexecutor.executeScript("window.scrollBy(" + hyperlinkXCoordinate + "," + hyperlinkYCoordinate + ")", "");
 
-        (new WebDriverWait(driver, 100)).until(ExpectedConditions.elementToBeClickable(By.linkText("Open page in a new window")));
+        new WebDriverWait(driver, 100)
+                .until(ExpectedConditions.elementToBeClickable(By.linkText("Open page in a new window")));
 
         driver.findElement(By.linkText("Open page in a new window")).click();
 
         Set<String> testPageWindowHandle = driver.getWindowHandles();
-
-        List<String> windowsHandler = (List<String>) driver.getWindowHandles();
 
         for (String windowHandle : testPageWindowHandle) {
             if (!firstPageWindowHandle.equals(windowHandle)) {
                 secondTestWindowHandle = windowHandle;
             }
         }
+
         driver.switchTo().window(secondTestWindowHandle);
 
-        driver.switchTo().window(windowsHandler.get(0));
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("testpagelink")));
 
@@ -109,11 +110,34 @@ public class WindowsTest  extends FrontendConfigFactory {
     }
 
     @Test
+    void scrollIntoView(){
+        driver.get("http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/complete_examples.html");
+
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"mCSB_9_container\"]/ul/li[4]/img"));
+
+        je.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    @Test
     public void popupHandler(){
         driver.switchTo().alert();
         driver.findElement(By.id("userID")).sendKeys("userName");
         driver.findElement(By.id("password")).sendKeys("myPassword");
         driver.switchTo().alert().accept();
         driver.switchTo().defaultContent();
+    }
+
+    @Test
+    public void alert(){
+        String firstWIndow;
+        firstWIndow = driver.getWindowHandle();
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        alert.dismiss();
+
+        driver.switchTo().window(firstWIndow);
     }
 }
