@@ -23,12 +23,11 @@ public class MainLoginPage extends BasePage {
     @FindBy(css = "a[data-tip-target=\"my-sites\"] span")
     public WebElement mySite;
 
-
-    public boolean isContentPresent(){
+    @Override
+    public boolean isContentPresent() {
         assertTrue(avatar.isDisplayed());
         assertTrue(mySite.isDisplayed());
         assertTrue(mySite.getText().equals(TestDataStatic.mySite));
         return true;
     }
 }
-

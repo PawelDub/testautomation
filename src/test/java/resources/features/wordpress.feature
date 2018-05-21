@@ -12,7 +12,5 @@ Feature: Test of content AddToYourOrder page
     When User press avatar
     Then User is personal page
     Then User is click notification
-    Then User press checkbox
-    When Checkbox is unselected
-#    When cos tam sie dzieje
-
+    When User press checkbox
+    Then Checkbox is unselected

@@ -17,7 +17,7 @@ public class WordpressSteps extends HelperSteps {
     //Jeżeli nie robilibysmy dziedziczenia po klasie HelperSteps to musielibysmy wówczas mieć tutaj pole
     // WebDriver driver;
     // oraz w konstruktorze nie możemy wówczas mieć linii
-    // super(config) wymuszone to jest ze względu na dziedziczenie
+    // super(CONFIG) wymuszone to jest ze względu na dziedziczenie
 
     public WordpressSteps(FrontendCucumberFactory config) {
 
@@ -42,36 +42,36 @@ public class WordpressSteps extends HelperSteps {
         driver.get(website);
 
         mainPage = new MainPage(driver);
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(mainPage.logIn));
+//        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(mainPage.logIn));
 
         assertTrue(mainPage.title.equals(TestDataStatic.wordpressTitle));
     }
 
     @When("^User clicks to login$")
-    public void userClicksToLogin() throws Throwable {
+    public void userClicksToLogin() {
         mainPage.logIn.click();
     }
 
     @Then("^User is on first login page$")
-    public void userIsOnFirstLoginPage() throws Throwable {
+    public void userIsOnFirstLoginPage() {
         loginPage = new LoginPage(driver);
         assertTrue(loginPage.loginHeader.isDisplayed());
     }
 
     @When("^User enter email and press Continue$")
-    public void userEnterEmailAndPressContinue() throws Throwable {
+    public void userEnterEmailAndPressContinue() {
         loginPage.usernameInput.sendKeys(TestDataStatic.login);
         loginPage.buttonContinue.click();
     }
 
     @Then("^User is on second page password$")
-    public void userIsOnSecondPagePassword() throws Throwable {
+    public void userIsOnSecondPagePassword() {
         passwordPage = new PasswordPage(driver);
         assertTrue(passwordPage.buttonLogIn.isDisplayed());
     }
 
     @When("^User enter password and press LogIn$")
-    public void userEnterPasswordAndPressLogIn() throws Throwable {
+    public void userEnterPasswordAndPressLogIn() {
         passwordPage.passwordInput.sendKeys(TestDataStatic.password);
         passwordPage.buttonLogIn.click();
     }
@@ -84,19 +84,19 @@ public class WordpressSteps extends HelperSteps {
     }
 
     @When("^User press avatar$")
-    public void userPressAvatar() throws Throwable {
+    public void userPressAvatar() {
         mainLoginPage.avatar.click();
     }
 
     @Then("^User is personal page$")
-    public void userIsPersonalPage() throws Throwable {
+    public void userIsPersonalPage() {
         personalPage = new PersonalPage(driver);
         assertTrue(personalPage.titleNotification.isDisplayed());
         personalPage.notification.click();
     }
 
     @When("^User is click notification$")
-    public void userIsOnNotificationPage() throws Throwable {
+    public void userIsOnNotificationPage() {
         notificationPage = new NotificationPage(driver);
         notificationPage.isContentPresent();
         notificationPage.checkbox.isDisplayed();
@@ -104,12 +104,12 @@ public class WordpressSteps extends HelperSteps {
     }
 
     @Then("^User press checkbox$")
-    public void userPressCheckbox() throws Throwable {
+    public void userPressCheckbox() {
         notificationPage.checkbox.click();
     }
 
     @When("^Checkbox is unselected$")
-    public void checkboxIsUnselected() throws Throwable {
+    public void checkboxIsUnselected() {
         assertFalse(notificationPage.checkbox.isSelected());
         notificationPage.checkbox.click();
     }

@@ -19,7 +19,7 @@ public class FrontendCucumberFactory {
 
     public WebDriver driver = null;
     public String baseUrl;
-    private boolean acceptNextAlert = true;
+//    private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     public String id = "0";
 
@@ -29,20 +29,20 @@ public class FrontendCucumberFactory {
     }
 
     @Before
-    public WebDriver setUp() throws Exception {
+    public WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         System.out.println("================== @Before Frontend Cucumber =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--start-maximized");
-//        baseUrl = "https://wordpress.com/";
+//        openBaseUrl = "https://wordpress.com/";
         if (driver == null) {
             driver = new ChromeDriver(chromeOptions);
         }
-        pripareDriver();
+        prepareDriver();
         return driver;
     }
 
-    void pripareDriver(){
+    void prepareDriver(){
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -50,7 +50,7 @@ public class FrontendCucumberFactory {
 
 
     @After
-    public void tearDown(Scenario scenario) throws Exception {
+    public void tearDown(Scenario scenario) {
 
         System.out.println("=========================== @After Cucumber Test  =======================================");
         String status;
@@ -73,5 +73,4 @@ public class FrontendCucumberFactory {
         driver.close();
         }
     }
-
 }

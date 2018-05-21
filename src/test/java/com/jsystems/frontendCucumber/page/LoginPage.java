@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.Assert.assertTrue;
 
-
 public class LoginPage extends HelperPage {
 
     public LoginPage(WebDriver driver) {
@@ -16,6 +15,9 @@ public class LoginPage extends HelperPage {
         PageFactory.initElements(driver, this);
     }
 
+/*
+* Możemy użyć zarówno PageFactory jak i klasycznie poprzez driver
+* */
 
     @FindBy(css = "div#primary div.login__form-header")
     public WebElement loginHeader;
@@ -28,7 +30,6 @@ public class LoginPage extends HelperPage {
     @FindBy(css = "div.login__form-action button[type=\"submit\"]")
     public WebElement buttonContinue;
 //    public WebElement buttonContinue = driver.findElement(By.cssSelector("div.login__form-action button[type=\"submit\"]"));
-
 
     public boolean isContentPresent(){
         assertTrue(loginHeader.getText().equals(TestDataStatic.loginHeader));

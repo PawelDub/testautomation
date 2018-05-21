@@ -5,17 +5,9 @@ import com.jsystems.frontend.TestDataStatic;
 import com.jsystems.frontend.page.LoginPage;
 import com.jsystems.frontend.page.MainPage;
 import com.jsystems.frontend.page.PasswordPage;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.Set;
 
 import static java.sql.DriverManager.registerDriver;
 
@@ -30,14 +22,14 @@ public class ActionTest extends FrontendConfigFactory {
 
         driver.get(baseUrl);
         mainPage = new MainPage(driver);
-//        mainPage.logIn.click();
+        mainPage.logIn.click();
         Actions action = new Actions(driver);
         action.moveToElement(
                 mainPage.logIn,
                 5, 5);
-//        action.clickAndHold();
+        action.clickAndHold();
 //        action.moveByOffset(xOffset, yOffset);
-//        action.release();
+        action.release();
         action.build().perform();
     }
 
@@ -59,8 +51,8 @@ public class ActionTest extends FrontendConfigFactory {
                 .build().perform();
 
         passwordPage = new PasswordPage(driver);
-        passwordPage.webWait(passwordPage.passwordInput, 15);
-        passwordPage.isContentPage();
+        passwordPage.waitForVisibilityOfElement(passwordPage.passwordInput, 15);
+        passwordPage.isContentPresent();
     }
 
 
@@ -72,8 +64,5 @@ public class ActionTest extends FrontendConfigFactory {
         do42.sendKeys("41 + 1");
         do42.sendKeys(Keys.ENTER);
         do42.perform();
-
     }
-
-
 }

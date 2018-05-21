@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PersonalPage extends BasePage {
+import static junit.framework.TestCase.assertTrue;
 
+public class PersonalPage extends BasePage {
     WebDriver driver;
+
     public PersonalPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -22,4 +24,12 @@ public class PersonalPage extends BasePage {
 
     @FindBy(id = "description")
     public WebElement textArea;
+
+    @Override
+    public boolean isContentPresent(){
+        assertTrue(profileDetailsSave.isDisplayed());
+        assertTrue(notificationList.isDisplayed());
+        assertTrue(textArea.isDisplayed());
+        return true;
+    }
 }

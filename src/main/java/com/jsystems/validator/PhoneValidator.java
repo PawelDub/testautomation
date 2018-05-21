@@ -20,9 +20,7 @@ public class PhoneValidator {
             //validating phone number with extension length from 3 to 5
         else if (phoneNo.matches("\\d{3}-\\d{3}-\\d{4}\\s(x|(ext))\\d{3,5}")) return true;
             //validating phone number where area code is in braces ()
-        else if (phoneNo.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) return true;
-            //return false if nothing matches the input
-        else return false;
+        else //return false if nothing matches the input
+            return phoneNo.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}");
     }
-
 }

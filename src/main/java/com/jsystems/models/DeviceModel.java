@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class DeviceModel implements Serializable{
 
-
     public String produce;
 
     @JsonProperty(value = "screen.size", required = true)

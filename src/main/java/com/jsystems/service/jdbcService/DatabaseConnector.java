@@ -1,4 +1,4 @@
-package com.jsystems.service;
+package com.jsystems.service.jdbcService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,6 +23,5 @@ public class DatabaseConnector {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 }

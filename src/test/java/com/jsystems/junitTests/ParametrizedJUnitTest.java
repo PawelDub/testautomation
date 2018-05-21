@@ -16,19 +16,18 @@ public class ParametrizedJUnitTest extends ConfigJUnit {
 
     private PhoneValidator phoneValidator;
 
-
     @Test        // parametry
     @Parameters({"1234567890", "123-456-7890", "(123)-456-7890", "123.456.7890", "123 456 7890", "123-456-7890 x1234", "123-456-7890 ext1234"})
-    public void shouldPhoneIsTrue(String phone) throws Exception {
+    public void shouldPhoneIsTrue(String phone) {
         System.out.println("=== test na true dla phone");
-        assertTrue(phoneValidator.validatePhoneNumber(phone));
+        assertTrue(PhoneValidator.validatePhoneNumber(phone));
     }
 
     @Test        // parametry
     @Parameters({"1234567890T", "123-456--7890", "(123)-456/-7890", "123.456..7890", "123 456   7890", "123-456-7890 xx1234", "123@-456-7890 ext1234"})
-    public void ShouldPhoneIsFalse(String phone) throws Exception {
+    public void ShouldPhoneIsFalse(String phone) {
         System.out.println("=== test na true dla phone");
-        assertFalse(phoneValidator.validatePhoneNumber(phone));
+        assertFalse(PhoneValidator.validatePhoneNumber(phone));
     }
 
 
@@ -36,7 +35,7 @@ public class ParametrizedJUnitTest extends ConfigJUnit {
     @CombinedParameters({"1,3", "1,3"})
     public void combinedParameters(String first, String second) {
         System.out.println("=== test na true dla combined parameters");
-        String result = first +second;
+        String result = first + second;
         System.out.println(result);
         assertTrue(result.contains("1") || result.contains("3"));
 
@@ -56,6 +55,4 @@ public class ParametrizedJUnitTest extends ConfigJUnit {
         Integer c = Integer.valueOf(first);
         assertTrue((c == 1 || c == 2) && (second.equals("Ela") || second.equals("Adam")) );
     }
-
 }
-

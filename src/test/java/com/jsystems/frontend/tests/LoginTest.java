@@ -30,7 +30,7 @@ public class LoginTest extends FrontendConfigFactory {
         public void testContentMain() {
 
             // wywołanie baseUri zostało przeniesione do setUp() FrontendConfigFactory
-//        driver.get(baseUrl);
+//        driver.get(openBaseUrl);
             mainPage = new MainPage(driver);
             mainPage.isContentPresent();
         }
@@ -38,7 +38,7 @@ public class LoginTest extends FrontendConfigFactory {
         @Test
 //    @Ignore
         public void testContentLogin() {
-//        driver.get(baseUrl);
+//        driver.get(openBaseUrl);
             mainPage = new MainPage(driver);
             mainPage.logIn.click();
             LoginPage loginPage = new LoginPage(driver);
@@ -48,7 +48,7 @@ public class LoginTest extends FrontendConfigFactory {
         @Test
 //    @Ignore
         public void testContentPassword() throws InterruptedException {
-//        driver.get(baseUrl);
+//        driver.get(openBaseUrl);
             mainPage = new MainPage(driver);
             mainPage.logIn.click();
             LoginPage loginPage = new LoginPage(driver);
@@ -56,7 +56,7 @@ public class LoginTest extends FrontendConfigFactory {
             loginPage.buttonContinue.click();
             Thread.sleep(2000);
             passwordPage = new PasswordPage(driver);
-            passwordPage.isContentPage();
+            passwordPage.isContentPresent();
         }
 
 
@@ -69,7 +69,7 @@ public class LoginTest extends FrontendConfigFactory {
         @Test
 //    @Ignore
         public void testLogin() {
-//        driver.get(baseUrl);
+//        driver.get(openBaseUrl);
             mainPage = new MainPage(driver);
             mainPage.logIn.click();
             LoginPage loginPage = new LoginPage(driver);
@@ -98,14 +98,14 @@ public class LoginTest extends FrontendConfigFactory {
             passwordPage.passwordInput.sendKeys(TestDataStatic.password);
             passwordPage.buttonLogIn.click();
             mainLoginPage = new MainLoginPage(driver);
-            mainLoginPage.webWait(mainLoginPage.avatar, 15);
+            mainLoginPage.waitForVisibilityOfElement(mainLoginPage.avatar, 15);
             mainLoginPage.avatar.click();
             personalPage = new PersonalPage(driver);
 
             assertFalse(personalPage.profileDetailsSave.isEnabled());
             personalPage.textArea.clear();
             personalPage.textArea.sendKeys("To jest moj profile");
-            personalPage.webWait(personalPage.profileDetailsSave, 10);
+            personalPage.waitForVisibilityOfElement(personalPage.profileDetailsSave, 10);
             assertTrue(personalPage.textArea.getText().equals("To jest moj profile"));
         }
     }
@@ -130,11 +130,11 @@ public class LoginTest extends FrontendConfigFactory {
 
             personalPage.notificationList.click();
             notificationPage = new NotificationPage(driver);
-            assertTrue(notificationPage.firstCheckboc.isSelected());
-            notificationPage.firstCheckboc.click();
-            assertFalse(notificationPage.firstCheckboc.isSelected());
-            notificationPage.firstCheckboc.click();
-            assertTrue(notificationPage.firstCheckboc.isSelected());
+            assertTrue(notificationPage.firstCheckbox.isSelected());
+            notificationPage.firstCheckbox.click();
+            assertFalse(notificationPage.firstCheckbox.isSelected());
+            notificationPage.firstCheckbox.click();
+            assertTrue(notificationPage.firstCheckbox.isSelected());
         }
     }
 }

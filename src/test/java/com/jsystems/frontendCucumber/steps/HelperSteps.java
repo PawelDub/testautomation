@@ -19,7 +19,7 @@ public class HelperSteps {
     }
 
 
-    public void waitVisibilityOf(WebElement webElement, int  time){
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(webElement));
-    }
+//    public void waitVisibilityOf(WebElement webElement, int  time){
+//        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(webElement));
+//    }
 }

@@ -1,16 +1,17 @@
 package com.jsystems.junitTests;
 
-import com.jsystems.mockitoPacket.UserMock;
-import com.jsystems.service.UserService;
+import com.jsystems.mockitoPacket.TestUser;
+import com.jsystems.service.jdbcService.UserServiceDao;
 import org.hamcrest.collection.IsEmptyCollection;
-import org.junit.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.Assert;
+import org.junit.jupiter.api.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -19,17 +20,25 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
 
-public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
+public class FirstJUnitTest extends ConfigJUnit {
 
+    int repeatedTest = 0;
+    @Tag("Repeated") //mvn clean install -Dtests=Repeated
+    @Tag("all")      //mvn clean install -PallTests // allTests it is profile in pom file
     @Test
-    @DisplayName("======== To jest pierwszy test ===============")
+    @DisplayName("======== First JUnit test, to get know assert methods ===============")
     @RepeatedTest(5)
-    public void firstJUnitTest() {
-        System.out.println("############ test 1 ##################");
-
+    public void testForToGetKnowAssertMethods() {
+        System.out.println("############ test " + ++repeatedTest + " ##################");
 
         String testowy = "firstTest";
         Integer dd = 5;
+
+        String test = "firstTest";
+        String testo = new String("firstTest");
+
+
+        assertTrue(testowy.equals(testo));
         assertTrue("message from True", testowy.equals("firstTest"));
         assertTrue("message from True", 5 == (2 + 3));
         assertFalse("message from False", testowy.equals("Adam"));
@@ -42,10 +51,11 @@ public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
     }
 
 
-    static List<Integer> integery = Arrays.asList(1, 2, 3, 4, 5);
+    List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
 
+    @Tag("all")
     @Test
-    @DisplayName("================= To jest drugi test =================================")
+    @DisplayName("================= Second test to get know matchers methods =================================")
     public void secondJUnitTest() {
         System.out.println("############ test 2 ##################");
         String testowy = "firstTest";
@@ -58,13 +68,20 @@ public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
         assertSame(testowy, "firstTest");
         assertThat(testowy, containsString("Test"));
         assertThat(testowy, equalTo("firstTest"));
-        assertThat(integery, hasItem(5));
-        assertThat(integery, hasItem(5));
-        assertThat(integery, hasItem(5));
+        assertThat(integers, hasItem(5));
+        assertThat(integers.size(), is(5) );
+        assertThat(integers, hasItem(2));
+        assertThat(testowy, matchesPattern("^first.*"));
+        Assert.assertThat("123456789", matchesPattern("^[0-9]+"));
+
+        assertFalse(0.2*0.2 == 0.4);
+        System.out.println(0.2*0.2);
+        assertTrue(new BigDecimal("0.2").multiply(new BigDecimal("0.2")).doubleValue() == 0.04);
     }
 
+    @Tag("all")
     @Test
-    @DisplayName("======= To jest trzeci test: Listy")
+    @DisplayName("======= Third test: Lists")
     public void firdTest() {
         List<Integer> list1 = Arrays.asList(1,2,3,4,5);
         List<Integer> list1a = Arrays.asList(1,2,3,4,5);
@@ -81,26 +98,23 @@ public class FirstJUnitTest extends com.jsystems.junitTests.ConfigJUnit {
         assertTrue(true == true);
     }
 
+    UserServiceDao userService = new UserServiceDao();
 
-
-
-        UserService userService = new UserService();
+    @Tag("all")
     @Test
     @DisplayName("JDBC")
-    public void getUserMockTest(){
-        UserMock userMock = userService.getOne(1l);
-        System.out.println(userMock.toString());
-        assertTrue(userMock.getId() == 1);
+    public void getUserTest(){
+        TestUser testUser = userService.getOne(1l);
+        System.out.println(testUser.toString());
+        assertTrue(testUser.getId() == 1);
 
+        List<TestUser> userTest = new ArrayList<TestUser>();
 
-        List<UserMock> userMocks = new ArrayList<UserMock>();
+        userTest = userService.getAll();
+        System.out.println(userTest.toString());
+        assertTrue(userTest.get(0).getId() == 1);
 
-        userMocks = userService.getAll();
-        System.out.println(userMocks.toString());
-        assertTrue(userMocks.get(0).getId() == 1);
-
-//        userService.saveOne(new UserMock(4, "Roman", "Romanowski"));
-
+//        userService.saveOne(new TestUser(4, "Roman", "Romanowski"));
 //        userService.delete(4);
 
     }

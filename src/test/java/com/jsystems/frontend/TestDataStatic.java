@@ -1,7 +1,8 @@
 package com.jsystems.frontend;
 
 public class TestDataStatic {
-    //warto pola statyczne trzymać jako oznaczone jako final aby ktoś w swoim teście przypadkiem nie ustawił innej wartości
+
+    //warto pola statyczne trzymać oznaczone jako final aby ktoś w swoim teście przypadkiem nie ustawił innej wartości
     public final static String wordpressTitle = "WordPress.com: Create a free website or blog";
     public final static String wordPressPower = "WordPress powers 29% of the internet.";
     public final static String logIn = "Log In";

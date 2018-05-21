@@ -1,6 +1,8 @@
 package com.jsystems.junitTests;
 
+import com.jsystems.service.GamePlay;
 import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -35,7 +37,7 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
 //        @Disabled
         @ParameterizedTest
         @CsvSource({"Hello, 5", "JUnit 5, 7", "'Hello, JUnit 5!', 15"})
-        public void shouldPhoneIsTrue(String tekst, int liczba) throws Exception {
+        public void shouldPhoneIsTrue(String tekst, int liczba) {
             System.out.println("=== test na true dla phone");
             List<String> listaStringow = Arrays.asList("Hello", "JUnit 5", "Hello, JUnit 5!");
             List<Integer> listaIntegerow = Arrays.asList(5, 7, 15);
@@ -48,7 +50,7 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
         @DisplayName("====== Second parametrized test ======")
         @ParameterizedTest
         @CsvSource({"Hello, 5", "JUnit 5, 7", "'Hello, JUnit 5!', 15"})
-        public void ShouldPhoneIsFalse(String tekst, int length) throws Exception {
+        public void ShouldPhoneIsFalse(String tekst, int length) {
             List<String> listaStringow = Arrays.asList("Hello", "JUnit 5", "Hello, JUnit 5!");
             List<Integer> listaIntegerow = Arrays.asList(5, 7, 15);
             System.out.println("=== test na true dla phone");
@@ -84,7 +86,6 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
         }
 
 
-
     }
 
     @Nested
@@ -111,6 +112,16 @@ public class ParametrizedJupiterTest extends ConfigJUnit {
         public void toJestNextTest() {
             assertThat("to jest tekst", testowy, containsString("String"));
         }
-    }
 
+        private GamePlay gamePlay = new GamePlay();
+
+        @Test
+        @DisplayName("Don't Play with number = 0")
+        public void testZero() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> {
+                        gamePlay.play(0);
+                    });
+        }
+    }
 }

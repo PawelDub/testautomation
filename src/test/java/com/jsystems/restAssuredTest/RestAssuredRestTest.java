@@ -1,10 +1,10 @@
 package com.jsystems.restAssuredTest;
 
-import com.jsystems.models.ErrorResponse;
-import com.jsystems.models.MyObj;
-import com.jsystems.models.User;
+import com.jsystems.models.*;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Disabled;
@@ -13,7 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -23,6 +25,7 @@ import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.ArgumentMatchers.matches;
 
 
 //@RunWith(JUnitPlatform.class)
@@ -32,8 +35,8 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
     public void firstTest() {
         given()
-//                .contentType(ContentType.JSON)
                 .spec(requestSpecBuilder)
+//                .contentType("application/json")
                 .when()
 //                .get("http://www.mocky.io/v2/5a6b69ec3100009d211b8aeb")
                 .get("/5a6b69ec3100009d211b8aeb")
@@ -49,7 +52,8 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     @DisplayName("======================Drugi test który się wysypie")
     public void secondTest() {
         given()
-                .contentType("application/json")
+//                .contentType("application/json")
+                .spec(requestSpecBuilder)
                 .when()
 //                .get("http://www.mocky.io/v2/5a6a58222e0000d0377a7789")
                 .get("/5a6a58222e0000d0377a7789")
@@ -60,13 +64,15 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .body("[0].imie", is("Piotr"))
                 .body("[0].nazwisko", equalTo("Kowalski"))
                 .body("[0].device[0].type", equalTo("computer"))
-                .body("[0].device[0].device.model[0].producec", equalTo("dell"));
+                .body("[0].device[0].device.model[0].produce", equalTo("dell"));
     }
 
     @Test
     @DisplayName("======================Trzeci test, użycie JsonPath")
     public void SimpleTest() {
-        JsonPath jsonPath = RestAssured.given()
+        JsonPath jsonPath = RestAssured
+                .given()
+                .spec(requestSpecBuilder)
                 .when()
 //                .get("http://www.mocky.io/v2/5a6b69ec3100009d211b8aeb")
                 .get("/5a6b69ec3100009d211b8aeb")
@@ -88,7 +94,9 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     @Test
     @DisplayName("======================Test z użyciem JsonPath")
     public void restTest() {
-        JsonPath jsonPath = RestAssured.given()
+        JsonPath jsonPath = RestAssured
+                .given()
+                .spec(requestSpecBuilder)
                 .when()
 //                .get("http://www.mocky.io/v2/5a6a58222e0000d0377a7789")
                 .get("/5a6a58222e0000d0377a7789")
@@ -107,6 +115,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
     public void nextTest() {
         Response response = given()
+                .spec(requestSpecBuilder)
                 .contentType("application/json")
                 .when()
 //                .get("http://www.mocky.io/v2/5a6b69ec3100009d211b8aeb")
@@ -128,18 +137,20 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
-    public void restAssuredSerializedTest() throws IOException {
+    public void restAssuredSerializedTest() {
 
         Response response = given()
-                .contentType("application/json")
+                .spec(requestSpecBuilder)
                 .when()
 //                .get("http://www.mocky.io/v2/5a6a58222e0000d0377a7789")
                 .get("/5a6a58222e0000d0377a7789")
                 .andReturn();
 
-        User[] usersTab = response.then().extract().body()
+        User[] usersTab = response
+                .then()
+                .extract()
+                .body()
                 .as(User[].class);
-
 
         List<User> users = Arrays.asList(usersTab);
 
@@ -157,7 +168,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     @DisplayName("======================Error test")
     public void errorTest() {
         Response response = given()
-                .contentType("application/json")
+                .spec(requestSpecBuilder)
                 .when()
 //                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
                 .get("/5a690b452e000054007a73cd")
@@ -190,7 +201,8 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 //                .build();
 
         Response response = given()
-                .spec(requestSpecBuilder)
+                .spec(requestSpecBuilderWithContentHtml)
+                .contentType(ContentType.HTML)
                 .when()
 //                .get("http://www.mocky.io/v2//5a6b77973100009d211b8b0d")
                 .get("/5a6b77973100009d211b8b0d")
@@ -224,7 +236,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .body()
                 .as(String[].class)).toString();
 
-        System.out.println(responsePost.toString());
+        System.out.println(responsePost);
 
         assertThat(responsePost).isEqualTo("[]");
     }
@@ -247,7 +259,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("======================Test na JsonSchema")
-    public void jsonSchemaArrayTest() throws IOException {
+    public void jsonSchemaArrayTest() {
         Response response = given()
                 .spec(requestSpecBuilder)
                 .when()
@@ -259,5 +271,67 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .then()
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("schemaUser.json"));
+    }
+
+    @Test
+    @DisplayName("Test with Authorization")
+    public void getWithAuthorization(){
+
+        Response response = given()
+                .spec(requestSpecBuilderWithAuthorization)
+                .when()
+                .get("/5b008c113100007e0076df9d")
+                .andReturn();
+
+        MyObj myObj = response
+                .then()
+                .extract()
+                .body()
+                .as(MyObj.class);
+
+        System.out.println(response.getBody().prettyPeek());
+        System.out.println(myObj.toString());
+        assertTrue(myObj.name.equals("irek"));
+    }
+
+    @Test
+    @DisplayName("GET /api/Books  - Tests of Books")
+    public void getBooks(){
+
+        Response response = given()
+                .spec(requestSpecBuilderFaker)
+                .when()
+                .get("/api/Books")
+                .andReturn();
+
+        List<Book> books = Arrays.asList(response
+                .then()
+                .extract()
+                .body()
+                .as(Book[].class));
+        System.out.println(books.get(0).publishDate);
+        assertTrue(books.get(0).id == 1);
+        assertThat(books.get(0).publishDate);
+    }
+
+    @Test
+    @DisplayName("GET /api/Books  - Tests of Books")
+    public void getBookById(){
+
+        Response response = given()
+                .spec(requestSpecBuilderFaker)
+                .when()
+                .get("/api/Books/{id}", 1)
+                .andReturn();
+
+        Book books = response
+                .then()
+                .extract()
+                .body()
+                .as(Book.class);
+
+        System.out.println(response.getBody().prettyPeek());
+        System.out.println(books.publishDate);
+        assertTrue(books.id == 1);
     }
 }

@@ -16,9 +16,7 @@ public class FrontendConfigFactory {
 
     public WebDriver driver = null;
     public String baseUrl;
-//    private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    public String id = "0";
 
     // Jeżeli testy uruchamiane są przez JUnit to używamy metody @BeforeClass
     // Jeżeli testy są uruchamiane przez JUpiter to używamy @BeForeAll
@@ -34,7 +32,7 @@ public class FrontendConfigFactory {
     // Jeżeli testy są uruchamiane przez JUpiter to używamy @BeForeEach
 //    @Before
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp(){
         System.out.println("================== @Before Frontend JUnit =====================");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
@@ -56,15 +54,14 @@ public class FrontendConfigFactory {
     // Jeżeli testy są uruchamiane przez JUpiter to używamy @AfterEach
 //    @After
     @AfterEach
-    public void tearDown() throws Exception {
+    public void tearDown(){
         System.out.println("================== @After Frontend =====================");
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
+//        String verificationErrorString = verificationErrors.toString();
+//        if (!"".equals(verificationErrorString)) {
+//            fail(verificationErrorString);
         driver.quit();
         driver = null;
-        }
-        driver.close();
+//        }
+//        driver.close();
     }
-
 }

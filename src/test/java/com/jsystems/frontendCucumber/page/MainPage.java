@@ -12,16 +12,10 @@ public class MainPage extends HelperPage {
     public MainPage(WebDriver driver) {
         super(driver);
     }
-
     public String title = driver.getTitle();
-
     public WebElement logIn = driver.findElement(By.id("navbar-login-link"));
-
     public WebElement wordpress29percentage = driver.findElement(By.cssSelector("section#hero div.hp-hero__wrapper h1 span"));
-
     public WebElement getStartedBig = driver.findElement(By.id("hero-cta"));
-
-
 
     public boolean isContentPresent(){
         assertTrue(title.equals(TestDataStatic.wordpressTitle));
@@ -31,5 +25,4 @@ public class MainPage extends HelperPage {
         assertTrue(getStartedBig.isEnabled());
         return true;
     }
-
 }

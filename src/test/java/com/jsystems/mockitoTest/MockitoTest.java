@@ -12,17 +12,15 @@ import static org.junit.Assert.assertTrue;
 @RunWith(MockitoJUnitRunner.class)
 public class MockitoTest extends MockitoConfig {
 
-
     @Test
     public void testMockito(){
         assertTrue(userService.getOne(1l).getId() == 1);
-        assertTrue(userService.getAll().equals(userMocks));
+        assertTrue(userService.getAll().equals(usersMocks));
         assertTrue(userService.getAll().size() == 3);
         assertTrue(userService.getOne(1l).getName().equals("Franek"));
 
         Mockito.verify(userService,Mockito.atLeastOnce()).getAll();
         Mockito.verify(userService, Mockito.atLeast(2)).getAll();
-
     }
 
     @Test
@@ -41,5 +39,4 @@ public class MockitoTest extends MockitoConfig {
 
         Mockito.verify(mockedList,Mockito.times(1)).size();
     }
-
 }

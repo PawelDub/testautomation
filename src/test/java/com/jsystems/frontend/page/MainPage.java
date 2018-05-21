@@ -25,17 +25,16 @@ public class MainPage extends BasePage {
     @FindBy(css = "section#hero div.hp-hero__wrapper h1 span")
     public WebElement wordpress29percentage;
 
-
     @FindBy(id = "hero-cta")
     public WebElement getStartedBig;
 
-
-    public boolean isContentPresent(){
-       assertTrue(driver.getTitle().equals(TestDataStatic.wordpressTitle));
+    @Override
+    public boolean isContentPresent() {
+        assertTrue(driver.getTitle().equals(TestDataStatic.wordpressTitle));
         assertTrue(wordpress29percentage.getText().equals(TestDataStatic.wordPressPower));
         assertTrue(logIn.getText().equals(TestDataStatic.logIn));
         assertTrue(getStartedBig.isDisplayed());
         assertTrue(getStartedBig.isEnabled());
-       return true;
+        return true;
     }
 }

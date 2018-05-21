@@ -7,8 +7,6 @@ public class ErrorResponse {
     @JsonProperty("Error")
     public ErrorBody error;
 
-
-
     @Override
     public String toString() {
         return "ErrorResponse{" +
@@ -32,5 +30,4 @@ public class ErrorResponse {
                     '}';
         }
     }
-
 }

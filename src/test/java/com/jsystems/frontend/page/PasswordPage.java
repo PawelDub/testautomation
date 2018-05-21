@@ -10,6 +10,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public class PasswordPage extends BasePage {
     WebDriver driver;
+
     public PasswordPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -22,8 +23,8 @@ public class PasswordPage extends BasePage {
     @FindBy(css = "div.login__form-action button.button.form-button.is-primary")
     public WebElement buttonLogIn;
 
-
-    public boolean isContentPage(){
+    @Override
+    public boolean isContentPresent(){
         assertTrue(passwordInput.isDisplayed());
         assertTrue(buttonLogIn.isDisplayed());
         assertTrue(buttonLogIn.getText().equals(TestDataStatic.logIn));

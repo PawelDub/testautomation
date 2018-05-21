@@ -1,24 +1,18 @@
 package com.jsystems.mockitoPacket;
 
-//Adnotacje używane przy użyciu ORM-a hibernate
-//@Entity
-public class UserMock {
+public class TestUser {
 
-//    @Id
     private Long id;
-
-//    @Column(name = "name")
     private String name;
-//    @Column(name = "surname")
     private String surname;
 
-    public UserMock(Long id, String name, String surname) {
+    public TestUser(Long id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
     }
 
-    public UserMock() {
+    public TestUser() {
     }
 
     public Long getId() {
@@ -47,7 +41,7 @@ public class UserMock {
 
     @Override
     public String toString() {
-        return "UserMock{" +
+        return "TestUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +

@@ -8,14 +8,13 @@ import org.openqa.selenium.WebElement;
 import static junit.framework.TestCase.assertTrue;
 
 public class PasswordPage extends HelperPage {
+
     public PasswordPage(WebDriver driver) {
         super(driver);
     }
 
     public WebElement passwordInput = driver.findElement(By.id("password"));
-
     public WebElement buttonLogIn = driver.findElement(By.cssSelector("div.login__form-action button.button.form-button.is-primary"));
-
 
     public boolean isContentPage(){
         assertTrue(passwordInput.isDisplayed());

@@ -12,10 +12,9 @@ public class MainLoginPage extends HelperPage {
     public MainLoginPage(WebDriver driver) {
         super(driver);
     }
+
     public WebElement avatar = driver.findElement(By.cssSelector("a[data-tip-target=\"me\"]"));
-
     public WebElement mySite = driver.findElement(By.cssSelector("a[data-tip-target=\"my-sites\"] span"));
-
 
     public boolean isContentPresent(){
         assertTrue(avatar.isDisplayed());
@@ -24,4 +23,3 @@ public class MainLoginPage extends HelperPage {
         return true;
     }
 }
-

@@ -17,8 +17,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class ExpectedExceptionTest extends ConfigJUnit {
 
-
-
     @Test(expected = ArithmeticException.class)
     public void testDivisionWithException() {
         int i = 1 / 0;
@@ -35,7 +33,6 @@ public class ExpectedExceptionTest extends ConfigJUnit {
     public void testExpectedException1() {
         new com.jsystems.models.Person("Joe", -1);
     }
-
 
     @Rule
     public ExpectedException exception = ExpectedException.none();

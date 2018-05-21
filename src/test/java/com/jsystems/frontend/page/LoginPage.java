@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.Assert.assertTrue;
 
-
 public class LoginPage extends BasePage {
     WebDriver driver;
 
@@ -16,7 +15,6 @@ public class LoginPage extends BasePage {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
-
     }
 
     @FindBy(css = "div#primary div.login__form-header")
@@ -24,11 +22,12 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "usernameOrEmail")
     public WebElement usernameInput;
+
     @FindBy(css = "div.login__form-action button[type=\"submit\"]")
     public WebElement buttonContinue;
 
-
-    public boolean isContentPresent(){
+    @Override
+    public boolean isContentPresent() {
         assertTrue(loginHeader.getText().equals(TestDataStatic.loginHeader));
         assertTrue(usernameInput.isDisplayed());
         assertTrue(buttonContinue.getText().equals(TestDataStatic.continueButton));

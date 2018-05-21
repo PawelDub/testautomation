@@ -61,6 +61,4 @@ public class ConfigJUnit{
     public static void afterAll() {
         System.out.println("@AfterAll Backend");
     }
-
-
 }

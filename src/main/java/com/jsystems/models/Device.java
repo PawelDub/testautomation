@@ -17,11 +17,4 @@ public class Device implements Serializable {
                 "\n\ttype : '" + type + '\'' +
                 ", \n\tdeviceModel : " + deviceModel + "\n\t}";
     }
-
-//    public String toString() {
-//        return "\n\t{" +
-//                "\n\t\timie : '" + imie + '\'' +
-//                ", \n\t\tnazwisko : '" + nazwisko + '\'' +
-//                ", \n\t\tdevice :" + device + "\n\t}";
-//    }
 }

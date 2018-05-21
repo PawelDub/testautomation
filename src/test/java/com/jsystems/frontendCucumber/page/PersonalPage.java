@@ -16,7 +16,6 @@ public class PersonalPage extends HelperPage {
 
     public WebElement notification = driver.findElement(By.cssSelector("a[href=\"/me/notifications\"]"));
 
-
     public boolean isContentPresent(){
         assertTrue(titleNotification.isDisplayed());
         assertTrue(notification.isDisplayed());

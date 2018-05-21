@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
 
                 "@wordpress"
 //                "@Login"
-
         }
 )
 public class RunTest {

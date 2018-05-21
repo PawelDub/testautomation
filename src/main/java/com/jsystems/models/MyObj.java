@@ -12,7 +12,6 @@ public class MyObj {
                 '}';
     }
 
-
     public MyObj(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -21,4 +20,3 @@ public class MyObj {
     public MyObj() {
     }
 }
-

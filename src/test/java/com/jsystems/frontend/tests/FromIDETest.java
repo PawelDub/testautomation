@@ -1,15 +1,15 @@
 package com.jsystems.frontend.tests;
 
-
 import com.jsystems.frontend.FrontendConfigFactory;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 public class FromIDETest extends FrontendConfigFactory {
 
     @Test
-//    @Ignore
-    public void testUntitledTestCase() throws Exception {
-        driver.get(baseUrl);
+    @Ignore
+    public void testUntitledTestCase() {
+//        driver.get(baseUrl);
 //        driver.findElement(By.id("navbar-login-link")).click();
 //        driver.findElement(By.id("usernameOrEmail")).clear();
 //        driver.findElement(By.id("usernameOrEmail")).sendKeys("automation012018@wp.pl");

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.UUID;
 
-public class BasePage {
+public class BasePage implements BasePageInterface {
     WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -24,12 +24,12 @@ public class BasePage {
         driver.findElement(by).click();
     }
 
-    public void webWait(WebElement element, int time){
-        WebDriverWait wait = new WebDriverWait(driver, time);
+    public void waitForVisibilityOfElement(WebElement element, int maxWaitTime){
+        WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void webWaitByTime(Long time){
+    public void waitMaxTime(Long time){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             wait(time);
@@ -38,12 +38,17 @@ public class BasePage {
         }
     }
 
-    public void open(String baseUrl) {
+    public void openBaseUrl(String baseUrl) {
         driver.get(baseUrl);
     }
 
-    public UUID randomTitle() {
+    public UUID randomUUID() {
         UUID temp = UUID.randomUUID();
         return temp;
+    }
+
+    @Override
+    public boolean isContentPresent() {
+        return false;
     }
 }
