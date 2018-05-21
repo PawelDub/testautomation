@@ -1,6 +1,6 @@
 package com.jsystems.mockitoTest;
 
-import com.jsystems.mockitoPacket.TestUser;
+import com.jsystems.mockitoPackage.TestUser;
 import com.jsystems.service.UserImplement;
 import com.jsystems.service.jdbcService.UserServiceDao;
 import org.junit.After;

@@ -1,7 +1,7 @@
 package com.jsystems.service.jdbiService;
 
-import com.jsystems.mockitoPacket.TestUser;
-import com.jsystems.service.jdbcService.UserServiceDao;
+import com.jsystems.mockitoPackage.TestUser;
+import com.jsystems.service.jdbiService.model.JdbiUser;
 import org.jdbi.v3.core.Handle;
 
 public class UserServise {
@@ -10,7 +10,7 @@ public class UserServise {
     private static UserDao userDao;
     private static Handle handle = databaseJdbiService.getHandle();
 
-    public static TestUser getTestUser(Long id){
+    public static JdbiUser getTestUser(Long id){
         userDao = handle.attach(UserDao.class);
         return userDao.getTestUserById(id);
     }

@@ -1,7 +1,9 @@
 package com.jsystems.junitTests;
 
-import com.jsystems.mockitoPacket.TestUser;
+import com.jsystems.mockitoPackage.TestUser;
 import com.jsystems.service.jdbcService.UserServiceDao;
+import com.jsystems.service.jdbiService.UserServise;
+import com.jsystems.service.jdbiService.model.JdbiUser;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.junit.Assert;
 import org.junit.jupiter.api.*;
@@ -98,24 +100,32 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertTrue(true == true);
     }
 
-    UserServiceDao userService = new UserServiceDao();
+    UserServiceDao userServiceDao = new UserServiceDao();
 
     @Tag("all")
     @Test
     @DisplayName("JDBC")
     public void getUserTest(){
-        TestUser testUser = userService.getOne(1l);
+        TestUser testUser = userServiceDao.getOne(1l);
         System.out.println(testUser.toString());
         assertTrue(testUser.getId() == 1);
 
         List<TestUser> userTest = new ArrayList<TestUser>();
 
-        userTest = userService.getAll();
+        userTest = userServiceDao.getAll();
         System.out.println(userTest.toString());
         assertTrue(userTest.get(0).getId() == 1);
 
-//        userService.saveOne(new TestUser(4, "Roman", "Romanowski"));
-//        userService.delete(4);
+//        userServiceDao.saveOne(new TestUser(4, "Roman", "Romanowski"));
+//        userServiceDao.delete(4);
 
+    }
+
+    @Test
+    void getUserTestByJdbi(){
+    UserServise userServise = new UserServise();
+        System.out.println(UserServise.getTestUser(1l).toString());
+        JdbiUser testUser = UserServise.getTestUser(1l);
+        assertTrue(testUser.getName().equals("Piotr"));
     }
 }

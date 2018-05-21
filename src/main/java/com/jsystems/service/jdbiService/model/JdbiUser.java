@@ -1,18 +1,18 @@
-package com.jsystems.mockitoPacket;
+package com.jsystems.service.jdbiService.model;
 
-public class TestUser {
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
+public class JdbiUser {
+
 
     private Long id;
     private String name;
     private String surname;
 
-    public TestUser(Long id, String name, String surname) {
+    public JdbiUser(@ColumnName("id") Long id, @ColumnName("name") String name, @ColumnName("surname") String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-    }
-
-    public TestUser() {
     }
 
     public Long getId() {
@@ -41,7 +41,7 @@ public class TestUser {
 
     @Override
     public String toString() {
-        return "TestUser{" +
+        return "JdbiUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
