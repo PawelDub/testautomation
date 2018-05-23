@@ -1,4 +1,4 @@
-package com.jsystems.service;
+package com.jsystems.mockitoTest;
 
 public interface UserImplement {
 

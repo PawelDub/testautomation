@@ -1,4 +1,4 @@
-package com.jsystems.mockitoPackage;
+package com.jsystems.models;
 
 public class TestUser {
 

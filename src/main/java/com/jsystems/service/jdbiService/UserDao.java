@@ -1,8 +1,6 @@
 package com.jsystems.service.jdbiService;
 
-import com.jsystems.mockitoPackage.TestUser;
 import com.jsystems.service.jdbiService.model.JdbiUser;
-import org.bouncycastle.util.test.Test;
 import org.jdbi.v3.sqlobject.config.RegisterConstructorMapper;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;

@@ -1,6 +1,6 @@
 package com.jsystems.service.jdbcService;
 
-import com.jsystems.mockitoPackage.TestUser;
+import com.jsystems.models.TestUser;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

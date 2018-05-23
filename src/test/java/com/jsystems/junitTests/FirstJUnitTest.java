@@ -1,11 +1,11 @@
 package com.jsystems.junitTests;
 
-import com.jsystems.mockitoPackage.TestUser;
+import com.jsystems.models.TestUser;
 import com.jsystems.service.jdbcService.UserServiceDao;
 import com.jsystems.service.jdbiService.UserServise;
 import com.jsystems.service.jdbiService.model.JdbiUser;
+import org.hamcrest.Matchers;
 import org.hamcrest.collection.IsEmptyCollection;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
@@ -17,6 +17,7 @@ import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
@@ -74,7 +75,7 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(integers.size(), is(5) );
         assertThat(integers, hasItem(2));
         assertThat(testowy, matchesPattern("^first.*"));
-        Assert.assertThat("123456789", matchesPattern("^[0-9]+"));
+        assertThat("123456789", matchesPattern("^[0-9]+"));
 
         assertFalse(0.2*0.2 == 0.4);
         System.out.println(0.2*0.2);
@@ -95,7 +96,9 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(list2, hasSize(5));
         assertThat(list1, not(containsInAnyOrder(1, 2, 3)));
         assertThat(list2, not(IsEmptyCollection.empty()));
+        assertThat(list1, Matchers.hasItem(1));
         assertThat(list3, IsEmptyCollection.empty());
+        assertThat(list2, IsEmptyCollection.empty());
         assertTrue(list2.containsAll(list2a));
         assertTrue(true == true);
     }

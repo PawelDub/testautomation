@@ -17,7 +17,6 @@ public class LoginTest extends FrontendConfigFactory {
     PersonalPage personalPage;
     NotificationPage notificationPage;
 
-
     // Pamiętajmy aby @Nested było importowane z paczki JUpiter
     @Nested
     @DisplayName("==Testy contentu stron")
@@ -58,8 +57,6 @@ public class LoginTest extends FrontendConfigFactory {
             passwordPage = new PasswordPage(driver);
             passwordPage.isContentPresent();
         }
-
-
     }
 
     @Nested
@@ -104,6 +101,11 @@ public class LoginTest extends FrontendConfigFactory {
 
             assertFalse(personalPage.profileDetailsSave.isEnabled());
             personalPage.textArea.clear();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             personalPage.textArea.sendKeys("To jest moj profile");
             personalPage.waitForVisibilityOfElement(personalPage.profileDetailsSave, 10);
             assertTrue(personalPage.textArea.getText().equals("To jest moj profile"));

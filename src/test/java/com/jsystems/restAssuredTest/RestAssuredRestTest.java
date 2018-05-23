@@ -1,10 +1,14 @@
 package com.jsystems.restAssuredTest;
 
-import com.jsystems.models.*;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jsystems.models.TestUserGeneric;
+import com.jsystems.models.Book;
+import com.jsystems.models.ErrorResponse;
+import com.jsystems.models.MyObj;
+import com.jsystems.models.User;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Disabled;
@@ -13,9 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -25,7 +27,6 @@ import static io.restassured.RestAssured.given;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.ArgumentMatchers.matches;
 
 
 //@RunWith(JUnitPlatform.class)
@@ -242,6 +243,50 @@ public class RestAssuredRestTest extends ConfigRestAssured {
     }
 
     @Test
+    @DisplayName("Test for mapping response to the reference type")
+    public void genericTypeTest() throws IOException {
+        Response response = given()
+                .spec(requestSpecBuilder)
+                .when()
+//                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
+                .get("/5b05bf3f3200007100ebfa04")
+                .andReturn();
+        System.out.println(response
+                .then()
+                .extract()
+                .body().toString());
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        TestUserGeneric<Integer> testUserGeneric = objectMapper.readValue(response
+                .then()
+                .extract()
+                .body().asInputStream(), new TypeReference<TestUserGeneric<Integer>>() {
+        });
+
+        System.out.println(testUserGeneric);
+    }
+
+    @Test
+    @DisplayName("Test for mapping response to the reference type 2")
+    public void genericTypeTestNext() throws IOException {
+        Response response = given()
+                .spec(requestSpecBuilder)
+                .when()
+//                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
+                .get("/5b05c83e3200009700ebfa2b")
+                .andReturn();
+
+        TestUserGeneric<String> testUserGeneric = new ObjectMapper().readValue(response
+                .then()
+                .extract()
+                .body()
+                .asInputStream(), new TypeReference<TestUserGeneric<String>>(){});
+
+        System.out.println(testUserGeneric);
+    }
+
+    @Test
     @DisplayName("======================Test na JsonSchema")
     public void jsonSchemaTest() {
         Response response = given()
@@ -275,7 +320,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("Test with Authorization")
-    public void getWithAuthorization(){
+    public void getWithAuthorization() {
 
         Response response = given()
                 .spec(requestSpecBuilderWithAuthorization)
@@ -296,7 +341,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("GET /api/Books  - Tests of Books")
-    public void getBooks(){
+    public void getBooks() {
 
         Response response = given()
                 .spec(requestSpecBuilderFaker)
@@ -316,8 +361,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("GET /api/Books  - Tests of Books")
-    public void getBookById(){
-
+    public void getBookById() {
         Response response = given()
                 .spec(requestSpecBuilderFaker)
                 .when()

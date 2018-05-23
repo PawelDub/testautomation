@@ -4,7 +4,6 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 public class JdbiUser {
 
-
     private Long id;
     private String name;
     private String surname;

@@ -1,6 +1,5 @@
 package com.jsystems.service.jdbiService;
 
-import com.jsystems.mockitoPackage.TestUser;
 import com.jsystems.service.jdbiService.model.JdbiUser;
 import org.jdbi.v3.core.Handle;
 

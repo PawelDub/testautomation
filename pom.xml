@@ -22,6 +22,12 @@
                 <tests>all</tests>
             </properties>
         </profile>
+        <profile>
+            <id>regresion</id>
+            <properties>
+                <tests>Repeated</tests>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
