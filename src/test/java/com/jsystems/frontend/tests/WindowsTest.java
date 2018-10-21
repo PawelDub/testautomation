@@ -2,6 +2,7 @@ package com.jsystems.frontend.tests;
 
 import com.jsystems.frontend.FrontendConfigFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -140,4 +141,31 @@ public class WindowsTest  extends FrontendConfigFactory {
 
         driver.switchTo().window(firstWIndow);
     }
+
+    void waitForExecute(Executable condition, long maxWaitTime) {
+        new WebDriverWait(driver, maxWaitTime).until(driver -> {
+            try {
+                condition.execute();
+                return true;
+            } catch (org.openqa.selenium.StaleElementReferenceException e) {
+            } catch (org.openqa.selenium.WebDriverException e) {
+            } catch (Throwable throwable) {
+            }
+            return false;
+        });
+    }
+
+    void waitForInVisibilityElement(WebElement webElement, long maxWaitTime) {
+        new WebDriverWait(driver, maxWaitTime).until(driver -> {
+            try {
+                if(webElement.isDisplayed()) return false;
+                else return true;
+            } catch (org.openqa.selenium.NoSuchElementException e){
+                return true;
+            } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                return true;
+            }
+        });
+    }
+
 }

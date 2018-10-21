@@ -1,18 +1,14 @@
 package com.jsystems.restAssuredTest;
 
-import com.jsystems.mocking.MockSamplers;
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.jsystems.mocking.MockSamplers.mockServerExpectationTestApi;
-
 public class ConfigRestAssured {
 
-    RequestSpecification requestSpecBuilder = new RequestSpecBuilder()
+    static RequestSpecification requestSpecBuilder = new RequestSpecBuilder()
 //                .addCookie("cookie")
 //                .addHeader("Authorization", "autoryzacja")
             .setContentType(ContentType.JSON)

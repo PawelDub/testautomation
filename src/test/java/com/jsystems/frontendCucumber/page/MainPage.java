@@ -13,8 +13,8 @@ public class MainPage extends HelperPage {
         super(driver);
     }
     public String title = driver.getTitle();
-    public WebElement logIn = driver.findElement(By.id("navbar-login-link"));
-    public WebElement wordpress29percentage = driver.findElement(By.cssSelector("section#hero div.hp-hero__wrapper h1 span"));
+    public WebElement logIn = driver.findElement(By.cssSelector(".x-nav-item.x-nav-item--wide.x-nav-item--logged-in"));
+    public WebElement wordpress29percentage = driver.findElement(By.cssSelector(".hp-hero-title.no-widows span:nth-Child(2)"));
     public WebElement getStartedBig = driver.findElement(By.id("hero-cta"));
 
     public boolean isContentPresent(){

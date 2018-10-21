@@ -36,7 +36,7 @@ public class LoginTest extends FrontendConfigFactory {
 
         @Test
 //    @Ignore
-        public void testContentLogin() {
+        public void testContentLogin(){
 //        driver.get(openBaseUrl);
             mainPage = new MainPage(driver);
             mainPage.logIn.click();
@@ -87,6 +87,12 @@ public class LoginTest extends FrontendConfigFactory {
         @Test
         public void insertTextTest() {
             mainPage = new MainPage(driver);
+            assertTrue(mainPage.title.contains("Word"));
+
+            System.out.println(mainPage.body.getTagName());
+            mainPage.getStartedBig.isDisplayed();
+            mainPage.wordpress29percentage.isDisplayed();
+            mainPage.logIn.isDisplayed();
             mainPage.logIn.click();
             LoginPage loginPage = new LoginPage(driver);
             loginPage.usernameInput.sendKeys(TestDataStatic.login);
@@ -117,7 +123,7 @@ public class LoginTest extends FrontendConfigFactory {
     public class NotificationPageTest {
 
         @Test
-        public void notificationTest() {
+        public void notificationTest(){
             mainPage = new MainPage(driver);
             mainPage.logIn.click();
             LoginPage loginPage = new LoginPage(driver);
@@ -129,7 +135,6 @@ public class LoginTest extends FrontendConfigFactory {
             mainLoginPage = new MainLoginPage(driver);
             mainLoginPage.avatar.click();
             personalPage = new PersonalPage(driver);
-
             personalPage.notificationList.click();
             notificationPage = new NotificationPage(driver);
             assertTrue(notificationPage.firstCheckbox.isSelected());

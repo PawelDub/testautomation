@@ -9,11 +9,9 @@ import static junit.framework.TestCase.assertTrue;
 
 public class NotificationPage extends BasePage {
 
-    WebDriver driver;
 
     public NotificationPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

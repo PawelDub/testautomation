@@ -9,22 +9,25 @@ import org.openqa.selenium.support.PageFactory;
 import static org.junit.Assert.assertTrue;
 
 public class LoginPage extends BasePage {
-    WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "div#primary div.login__form-header")
     public WebElement loginHeader;
-    //    public WebElement loginHeader = driver.findElement(By.cssSelector("div#primary div.login__form-header")) ;
+//public WebElement loginHeader = driver.findElement(By.cssSelector("div#primary div.login__form-header")) ;
+
     @FindBy(id = "usernameOrEmail")
     public WebElement usernameInput;
+//    public WebElement usernameInput = driver.findElement(By.id("usernameOrEmail"));
+
 
     @FindBy(css = "div.login__form-action button[type=\"submit\"]")
     public WebElement buttonContinue;
+//    public WebElement buttonContinue = driver.findElement(By.cssSelector("div.login__form-action button[type=\"submit\"]"));
+
 
     @Override
     public boolean isContentPresent() {

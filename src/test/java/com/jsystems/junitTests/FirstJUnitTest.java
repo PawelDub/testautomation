@@ -98,7 +98,6 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertThat(list2, not(IsEmptyCollection.empty()));
         assertThat(list1, Matchers.hasItem(1));
         assertThat(list3, IsEmptyCollection.empty());
-        assertThat(list2, IsEmptyCollection.empty());
         assertTrue(list2.containsAll(list2a));
         assertTrue(true == true);
     }

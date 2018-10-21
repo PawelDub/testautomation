@@ -6,7 +6,7 @@ import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 public class DatabaseJdbiService {
-    private static Jdbi jdbi;
+    private static Jdbi jdbi ;
     private static Handle handle;
 
     static {

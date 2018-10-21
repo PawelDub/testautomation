@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.UUID;
 
-public class BasePage implements BasePageInterface {
+public class BasePage{
     WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -47,7 +47,7 @@ public class BasePage implements BasePageInterface {
         return temp;
     }
 
-    @Override
+//    @Override
     public boolean isContentPresent() {
         return false;
     }

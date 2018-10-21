@@ -9,11 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import static junit.framework.TestCase.assertTrue;
 
 public class PasswordPage extends BasePage {
-    WebDriver driver;
 
     public PasswordPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

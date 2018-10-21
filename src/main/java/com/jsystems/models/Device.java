@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 
-public class Device implements Serializable {
+public class Device {
     public String type;
 
     @JsonProperty(value = "device.model", required = true)

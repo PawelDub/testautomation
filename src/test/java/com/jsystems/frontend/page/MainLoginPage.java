@@ -9,11 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import static junit.framework.TestCase.assertTrue;
 
 public class MainLoginPage extends BasePage {
-    WebDriver driver;
 
     public MainLoginPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

@@ -18,14 +18,15 @@ public class ErrorResponse {
 
         @JsonProperty("error.code")
         public int error_code;
-        public String validation_erro;
+        @JsonProperty("validation_erro")
+        public String validationErro;
         public String message;
 
         @Override
         public String toString() {
             return "ErrorBody{" +
                     "error_code=" + error_code +
-                    ", validation_erro='" + validation_erro + '\'' +
+                    ", validation_erro='" + validationErro + '\'' +
                     ", message='" + message + '\'' +
                     '}';
         }

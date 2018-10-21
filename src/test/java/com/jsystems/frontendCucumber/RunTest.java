@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/resources/features", // informacja gdzie sa zlokalizowane scenariusze testowe
-        glue = "classpath:com.jsystems", // informacja gdzie są zlokalizowane stepy
+        features = "src/test/resources/features", // informacja gdzie sa zlokalizowane scenariusze testowe
+        glue = "classpath:com.jsystems.frontendCucumber", // informacja gdzie są zlokalizowane stepy
         plugin = {"html:target/cucumber-html-report", "rerun:target/rerun.txt"},  // plugin do tworzenia raportów html z wykonanych testów
         tags = {
                 // tutaj trzeba uważać ponieważ może być tylko jedna adnotacja odsłonięta
@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
                 // W przypadku zasłoniętych wszystkich adnotacji w tym miejscu wykonywane są wszystkie testy w scenariuszach
                 // wówczas kolejność wykonywania idzie zgodnie z kolejnością plików feature i testy wykonywane są po kolei w plikach
 
-                "@wordpress"
-//                "@Login"
+//                "@wordpress",
+                "@Login"
         }
 )
 public class RunTest {

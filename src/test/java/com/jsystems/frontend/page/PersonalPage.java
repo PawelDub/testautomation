@@ -8,11 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import static junit.framework.TestCase.assertTrue;
 
 public class PersonalPage extends BasePage {
-    WebDriver driver;
 
     public PersonalPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

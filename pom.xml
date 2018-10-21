@@ -72,7 +72,7 @@
                         <include>**/*Test.java</include>
                     </includes>
                     <properties>
-                        <includeTags>${tests}</includeTags>
+                        <!--<includeTags>${tests}</includeTags>-->
                     </properties>
                 </configuration>
             </plugin>

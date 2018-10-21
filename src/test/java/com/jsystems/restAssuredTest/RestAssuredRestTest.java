@@ -2,11 +2,7 @@ package com.jsystems.restAssuredTest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jsystems.models.TestUserGeneric;
-import com.jsystems.models.Book;
-import com.jsystems.models.ErrorResponse;
-import com.jsystems.models.MyObj;
-import com.jsystems.models.User;
+import com.jsystems.models.*;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -34,7 +30,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
 
     @Test
     @DisplayName("======================Testy z wykorzystaniem biblioteki Rest Assured")
-    public void firstTest() {
+     void firstTest() {
         given()
                 .spec(requestSpecBuilder)
 //                .contentType("application/json")
@@ -162,6 +158,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
         assertThat(users.get(0).device.get(0).type).isEqualTo("computer");
         assertThat(users.get(0).device.get(0).deviceModel.get(0).produce).isEqualTo("dell");
         assertThat(users.get(0).device.get(0).deviceModel.get(0).screen_size).isEqualTo("17");
+        assertTrue(response.getHeader("Content-type").equals("application/json"));
     }
 
 
@@ -184,7 +181,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
         System.out.println(errorResponse.toString());
 
         assertThat(errorResponse.error.error_code == 400);
-        assertThat(errorResponse.error.validation_erro).isEqualTo("invalid_email");
+        assertThat(errorResponse.error.validationErro).isEqualTo("invalid_email");
         assertThat(errorResponse.error.message).isEqualTo("your email is invalid");
     }
 
@@ -230,16 +227,16 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                         .post("/5a690a1b2e000051007a73cb")
                         .andReturn();
 
-        String responsePost = Arrays.asList(response
+        String[] responsePost = response
                 .then()
                 .statusCode(201)
                 .extract()
                 .body()
-                .as(String[].class)).toString();
+                .as(String[].class);
 
         System.out.println(responsePost);
 
-        assertThat(responsePost).isEqualTo("[]");
+        assertThat(responsePost).isEmpty();
     }
 
     @Test
@@ -248,7 +245,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
         Response response = given()
                 .spec(requestSpecBuilder)
                 .when()
-//                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
+//                .get("http://www.mocky.io/v2/5b05bf3f3200007100ebfa04")
                 .get("/5b05bf3f3200007100ebfa04")
                 .andReturn();
         System.out.println(response
@@ -273,7 +270,7 @@ public class RestAssuredRestTest extends ConfigRestAssured {
         Response response = given()
                 .spec(requestSpecBuilder)
                 .when()
-//                .get("http://www.mocky.io/v2/5a690b452e000054007a73cd")
+//                .get("http://www.mocky.io/v2/5b05c83e3200009700ebfa2b")
                 .get("/5b05c83e3200009700ebfa2b")
                 .andReturn();
 

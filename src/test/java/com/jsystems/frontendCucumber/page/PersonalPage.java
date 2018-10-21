@@ -12,6 +12,7 @@ public class PersonalPage extends HelperPage {
     public PersonalPage(WebDriver driver) {
         super(driver);
     }
+
     public WebElement titleNotification = driver.findElement(By.className("profile-gravatar__user-display-name"));
 
     public WebElement notification = driver.findElement(By.cssSelector("a[href=\"/me/notifications\"]"));
