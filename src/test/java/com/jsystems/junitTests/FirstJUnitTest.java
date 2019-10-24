@@ -45,9 +45,9 @@ public class FirstJUnitTest extends ConfigJUnit {
         assertTrue("message from True", testowy.equals("firstTest"));
         assertTrue("message from True", 5 == (2 + 3));
         assertFalse("message from False", testowy.equals("Adam"));
-        assertThat("message from That", testowy, is("firstTest"));
         assertEquals("message from Equals", testowy, "firstTest");
         assertSame("message from Same", testowy, "firstTest");
+        assertThat("message from That", testowy, is("firstTest"));
         assertThat("message from That", testowy, containsString("Test"));
         assertThat("message from True", testowy, equalTo("firstTest"));
         assertThat("message from True", testowy, endsWith("t"));

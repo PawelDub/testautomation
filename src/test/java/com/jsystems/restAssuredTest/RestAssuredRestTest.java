@@ -365,14 +365,17 @@ public class RestAssuredRestTest extends ConfigRestAssured {
                 .get("/api/Books/{id}", 1)
                 .andReturn();
 
+        assertThat(response.contentType()).isEqualTo(ContentType.JSON);
+        assertThat(response.getSessionId()).isEqualTo("sessionId");
+        assertThat(response.getCookie("cookie")).isEqualTo("firstCookie");
+        assertThat(response.getHeader("name")).isEqualTo("value");
+
         Book books = response
                 .then()
                 .extract()
                 .body()
                 .as(Book.class);
 
-        System.out.println(response.getBody().prettyPeek());
-        System.out.println(books.publishDate);
         assertTrue(books.id == 1);
     }
 }
