@@ -6,22 +6,26 @@ import com.jsystems.service.jdbiService.UserServise;
 import com.jsystems.service.jdbiService.model.JdbiUser;
 import org.hamcrest.Matchers;
 import org.hamcrest.collection.IsEmptyCollection;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.google.common.truth.Truth.assertThat;
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertSame;
 import static org.hamcrest.CoreMatchers.*;
-
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FirstJUnitTest extends ConfigJUnit {
 
@@ -42,15 +46,15 @@ public class FirstJUnitTest extends ConfigJUnit {
 
 
         assertTrue(testowy.equals(testo));
-        assertTrue("message from True", testowy.equals("firstTest"));
-        assertTrue("message from True", 5 == (2 + 3));
+        assertTrue(testowy.equals("firstTest"));
+        assertTrue(5 == (2 + 3));
         assertFalse("message from False", testowy.equals("Adam"));
         assertEquals("message from Equals", testowy, "firstTest");
         assertSame("message from Same", testowy, "firstTest");
-        assertThat("message from That", testowy, is("firstTest"));
-        assertThat("message from That", testowy, containsString("Test"));
-        assertThat("message from True", testowy, equalTo("firstTest"));
-        assertThat("message from True", testowy, endsWith("t"));
+        assertThat(testowy).isEqualTo("firstTest");
+        assertThat(testowy).contains("Test");
+        assertThat(testowy).isEqualTo("firstTest");
+        assertThat(testowy).endsWith("t");
     }
 
 

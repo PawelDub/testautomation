@@ -118,7 +118,7 @@ public class WindowsTest  extends FrontendConfigFactory {
 
         WebElement element = driver.findElement(By.xpath("//*[@id=\"mCSB_9_container\"]/ul/li[4]/img"));
 
-        je.executeScript("arguments[0].scrollIntoView(true);",element);
+        je.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     @Test

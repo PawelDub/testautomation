@@ -29,7 +29,7 @@ public class ActionTest extends FrontendConfigFactory {
                 mainPage.logIn,
                 5, 5);
         action.clickAndHold();
-//        action.moveByOffset(xOffset, yOffset);
+        action.moveByOffset(5, 5);
         action.release();
         action.build().perform();
     }
